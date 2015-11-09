@@ -1,4 +1,6 @@
 <?php
+include("modules/packages.inc.php");
+
 include("globalExtensions.php");
 phpinfo();
   class DB {
