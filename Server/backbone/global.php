@@ -9,11 +9,6 @@ phpinfo();
     			      $this->password = DATABASE_USERS_PASSWORD;
     			      $this->database = DATABASE_USERS;
               break;
-          case "notes":
-                $this->user = $user;
-                $this->password = $password;
-                $this->database = $database;
-              break;
           default:
               //No Connection
       }
@@ -27,12 +22,14 @@ phpinfo();
 			$result = $db->query($query);
       $results;
       if(!$result){
+        $db->close();
         return array("error"=>DATABASE_QUERY_ERROR);
       }else{
         while ($row = $result->fetch_object()) {
   				$results[] = $row;
   			}
         $result->free();
+        $db->close();
   			return $results;
       }
 		}
@@ -40,10 +37,15 @@ phpinfo();
       $db = $this->connect();
       $result = $db->query($query);
       if(!$result){
+        $db->close();
         return false;
       }else{
+        $db->close();
         return true;
       }
+    }
+    public function __destruct(){
+        //CLEAN UP-> Everything should already we cleaned up...
     }
   }
   $db_users = new DB('users');
