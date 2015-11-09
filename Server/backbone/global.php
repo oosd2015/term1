@@ -22,7 +22,7 @@ phpinfo();
 		public function connect() {
 			return new mysqli($this->host, $this->user, $this->password, $this->database);
 		}
-		public function select($query) {
+		public function get($query) {
 			$db = $this->connect();
 			$result = $db->query($query);
       $results;
@@ -36,7 +36,7 @@ phpinfo();
   			return $results;
       }
 		}
-    public function query($query) {
+    public function set($query) {
       $db = $this->connect();
       $result = $db->query($query);
       if(!$result){
@@ -50,10 +50,10 @@ phpinfo();
   print_r($db_users);
 
   $query = "SELECT * FROM `users`";
-  $db_users->select($query);
+  $db_users->get($query);
 
-  $query = "UPDATE `users` SET `password`='".."' WHERE `id`='2'";
-  if($db_users->query($query)){
+  $query = "UPDATE `users` SET `password`='dsjkfjkdsjfsd' WHERE `id`='2'";
+  if($db_users->set($query)){
     echo 'Update Successful';
   }else{
     echo 'Update Failed';
