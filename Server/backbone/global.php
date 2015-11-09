@@ -45,7 +45,7 @@ phpinfo();
       }
     }
     public function __destruct(){
-        //CLEAN UP-> Everything should already we cleaned up...
+        //CLEAN UP-> Everything should already be cleaned up...
     }
   }
   $db_users = new DB('users');
