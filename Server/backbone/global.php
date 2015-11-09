@@ -2,6 +2,8 @@
 include("modules/packages.inc.php");
 
 include("globalExtensions.php");
+include("agencies.inc.php");
+
 phpinfo();
   class DB {
 		public function __construct($selector="users") {
