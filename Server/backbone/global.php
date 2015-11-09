@@ -48,6 +48,7 @@ phpinfo();
         //CLEAN UP-> Everything should already be cleaned up...
     }
   }
+
   $db_users = new DB('users');
   print_r($db_users);
 
@@ -60,9 +61,4 @@ phpinfo();
   }else{
     echo 'Update Failed';
   }
-
-
-
-
-
  ?>
