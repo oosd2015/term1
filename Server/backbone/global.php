@@ -1,17 +1,14 @@
 <?php
-include("modules/packages.inc.php");
-
 include("globalExtensions.php");
-include("agencies.inc.php");
 
 phpinfo();
   class DB {
-		public function __construct($selector="users") {
+		public function __construct($selector="travelexperts") {
       switch ($selector) {
-          case "users":
-                $this->user = DATABASE_USERS_USERNAME;
-    			      $this->password = DATABASE_USERS_PASSWORD;
-    			      $this->database = DATABASE_USERS;
+          case "travelexperts":
+                $this->user = DATABASE_TRAVELEXPERTS_USERNAME;
+    			      $this->password = DATABASE_TRAVELEXPERTS_PASSWORD;
+    			      $this->database = DATABASE_TRAVELEXPERTS;
               break;
           default:
               //No Connection
@@ -53,16 +50,13 @@ phpinfo();
     }
   }
 
-  $db_users = new DB('users');
-  print_r($db_users);
+  $db = new DB('travelexperts');
 
-  $query = "SELECT * FROM `users`";
-  $db_users->get($query);
+  $query = "SELECT * FROM `customers` WHERE `CustomerId`='104'";
+  $customers = $db->get($query);
 
-  $query = "UPDATE `users` SET `password`='dsjkfjkdsjfsd' WHERE `id`='2'";
-  if($db_users->set($query)){
-    echo 'Update Successful';
-  }else{
-    echo 'Update Failed';
-  }
+  print_r($customers);
+
+  var_dump($customers[0]->CustomerId);
+  echo $customers[0]->CustomerId;
  ?>

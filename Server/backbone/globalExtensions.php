@@ -1,8 +1,9 @@
 <?php
 define("DATABASE_HOST","localhost");
-define("DATABASE_USERS","soulstic_s_users");
-define("DATABASE_USERS_USERNAME",'soulstic_s_admin');
-define("DATABASE_USERS_PASSWORD",'u4g!Bu(2dLi_');
+
+define("DATABASE_TRAVELEXPERTS","travelexperts");
+define("DATABASE_TRAVELEXPERTS_USERNAME",'root');
+define("DATABASE_TRAVELEXPERTS_PASSWORD",'');
 
 //MYSQL CONNECTION ERRORS
 define("DATABASE_QUERY_ERROR","1000");
