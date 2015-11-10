@@ -1,7 +1,6 @@
 <?php
 include("globalExtensions.php");
 
-phpinfo();
   class DB {
 		public function __construct($selector="travelexperts") {
       switch ($selector) {
@@ -50,6 +49,7 @@ phpinfo();
     }
   }
 
+/*
   $db = new DB('travelexperts');
 
   $query = "SELECT * FROM `customers` WHERE `CustomerId`='104'";
@@ -59,4 +59,5 @@ phpinfo();
 
   var_dump($customers[0]->CustomerId);
   echo $customers[0]->CustomerId;
+  */
  ?>
