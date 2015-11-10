@@ -3,7 +3,7 @@
     $dB = new DB('travelexperts');
 
     $query = "SELECT * FROM `agencies`";
-    $agencies = $db->get($query);
+    $agencies = $dB->get($query);
 
 
 
