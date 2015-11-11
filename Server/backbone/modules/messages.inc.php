@@ -1,14 +1,13 @@
 <?php
     class Message
     {
-        protected $myType;
         protected $myUserMsg;
         protected $myHtmlOpen;
         protected $myHtmlClose;
 
-        function __construct($type)
+        function __construct($userMsg)
         {
-            $this->myType = $type;
+          $this->myUserMsg = $userMsg;
         }
 
         public function getUserMsg ()
@@ -23,7 +22,7 @@
 
         public function printUserMsg ()
         {
-            $this->myHtmlString = "$this->myHtmlOpen" . $this->$myType . $this->myUserMsg . "$this->myHtmlClose";
+            $this->myHtmlString = "$this->myHtmlOpen" . $this->myUserMsg . "$this->myHtmlClose";
             return $this->myHtmlString;
         }
     }
