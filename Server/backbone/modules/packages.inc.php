@@ -13,13 +13,8 @@ class packages{  //class that returns the array of packages sorted by date (eith
     $packagesArray;
     switch ($sortBy) {
         case "newest": //sort newest to oldest
-<<<<<<< HEAD
           $query = "SELECT * FROM `packages` ORDER BY `PkgStartDate` DESC" ;
-          return $this->connectToDatabase($query);
-=======
-          $query = "SELECT * FROM `packages` ORDER BY `PkgStartDate` DESC";
           $packagesArray = $this->connectToDatabase($query);
->>>>>>> origin/master
         break;
         case "oldest": //sort oldest to newest
           $query = "SELECT * FROM `packages` ORDER BY `PkgStartDate` ASC";
@@ -75,16 +70,9 @@ class packages{  //class that returns the array of packages sorted by date (eith
 
 }
 
-<<<<<<< HEAD
-$packagesArray = new packages();
-$allPackages = $packagesArray->getPackages('oldest'); //getPackages($sortBy = 'oldest', $sortMax = 5)
-print_r($allPackages);
-=======
 $packageInstance = new packages();
 $allPackages = $packageInstance->getPackages('oldest'); //value of the arrays sorted asc. or desc.
 $htmlOutput = $packageInstance->htmlFormatter($allPackages);
-//print_r($allPackages);
 print($htmlOutput);
->>>>>>> origin/master
 
  ?>
