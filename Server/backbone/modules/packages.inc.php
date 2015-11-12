@@ -8,7 +8,7 @@ include("../global.php");
   print_r($packages);
 */
 
-class packages{  //class that returns the array of packages sorted by date (either ascening or descending)
+class packages{  //class that returns the array of packages sorted by date (either ascending or descending)
   public function getPackages($sortBy){
     $packagesArray;
     switch ($sortBy) {
