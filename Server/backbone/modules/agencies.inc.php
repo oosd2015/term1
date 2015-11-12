@@ -117,11 +117,12 @@ I need to move to the Contact Page Later
       }
 
       public function getAgenciesContactInfo() {
-          return  $this->AgencyId . "<br/>" .
-                  "Phone: " . $this->AgncyPhone . "<br/>" .
-                  "Fax: " . $this->AgncyFax . "<br/>" .
-                  $this->AgncyAddress . " " . $this->AgncyCity . " " . $this->AgncyProv . "<br/>" .
-                  $this->AgncyPostal . " " . $this->AgncyCountry . "<br/>";
+        $htmlString = "Agency: " . $this->AgencyId . "<br/>" .
+                      "Phone: " . $this->AgncyPhone . "<br/>" .
+                      "Fax: " . $this->AgncyFax . "<br/>" .
+                      $this->AgncyAddress . " " . $this->AgncyCity . " " . $this->AgncyProv . "<br/>" .
+                      $this->AgncyPostal . " " . $this->AgncyCountry . "<br/>";
+        return $htmlString;
       }
     }
 
@@ -223,10 +224,11 @@ I need to move to the Contact Page Later
             }
 
             public function getAgentContactInfo() {
-                return  $this->getAgtFirstName() . " " . $this->getAgtMiddleInitial() . " " . $this->getAgtLastName() . "<br/>" .
-                        $this->getAgtBusPhone() . "<br/>" .
-                        "Phone: " . $this->getAgtBusPhone() . "<br/>" .
-                        "Email: " . $this->getAgtEmail() . "<br/>";
+                $htmlString = $this->getAgtFirstName() . " " . $this->getAgtMiddleInitial() . " " . $this->getAgtLastName() . "<br/>" .
+                              $this->getAgtBusPhone() . "<br/>" .
+                              "Phone: " . $this->getAgtBusPhone() . "<br/>" .
+                              "Email: " . $this->getAgtEmail() . "<br/>";
+                return $htmlString;
             }
       }
  ?>
