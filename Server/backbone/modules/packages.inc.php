@@ -12,7 +12,7 @@ class packages{
   public function getPackages($sortBy){
     switch ($sortBy) {
         case "newest": //sort newest to oldest
-          $query = "SELECT * FROM `packages` ORDER BY `PkgStartDate` DESC";
+          $query = "SELECT * FROM `packages` ORDER BY `PkgStartDate` DESC" ;
           return $this->connectToDatabase($query);
         break;
         case "oldest": //sort oldest to newest
@@ -32,7 +32,7 @@ class packages{
 }
 
 $packagesArray = new packages();
-$allPackages = $packagesArray->getPackages('oldest');
+$allPackages = $packagesArray->getPackages('oldest'); //getPackages($sortBy = 'oldest', $sortMax = 5)
 print_r($allPackages);
 
  ?>
