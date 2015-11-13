@@ -116,44 +116,8 @@
   include("../../server/backbone/global.php");
   include("../../server/backbone/modules/agencies.inc.php");
 
-    //Get and print the agencies
-    $dB = new DB('travelexperts');
-    $query = "SELECT * FROM `agencies`";
-    $agencies = $dB->get($query);
-
-    for ($i = 0; $i < count($agencies); $i++)
-    {
-
-      print ('<div class="row"><div class="col-lg-12 text-center">');
-      $agency = new Agency($agencies[$i]);
-      print ('<div class="gallery-box"><div class="col-lg-12 text-center">');
-      print ('<h2 class="section-heading">' . $agency->getAgncyCity() . ' Office</h2>');
-      print $agency->getAgenciesContactInfo(); //print the agency contacy info
-      print ('</div></div>');
-
-      print ('<div class="container"><div class="row">');
-      print ('<div class="gallery-box"><div class="col-lg-12 text-center"><h3>Agents</h3>');
-      print ('</div></div>');
-
-      //Now Get all the agents for each Agency and Print Them
-      $dB = new DB('travelexperts');
-      $myAgencyId = $agency->getAgencyId();
-      $query = "SELECT * FROM `agents` WHERE `AgencyId`='$myAgencyId'";
-      $agents = $dB->get($query);
-
-      for ($k = 0; $k < count($agents); $k++)
-      {
-        print ('<div align="center"><div class="col-md-4 agents" > ');
-        $agent = new Agent($agents[$k]);
-        print ($agent->getAgentContactInfo());
-        print ('</div></div>');
-      }
-
-
-      print ('</div></div>');
-      print ('</div></div>');
-    }
-
+  $contactDetails = new AgenciesView();
+  print ($contactDetails->getAgenciesHtml());
 ?>
 
     <section id="contact">
