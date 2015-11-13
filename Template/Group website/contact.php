@@ -69,19 +69,16 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                   <li>
-                      <a class="page-scroll" href="index.html">Home</a>
+                      <a class="page-scroll" href="index.php">Home</a>
                   </li>
                     <li>
-                        <a class="page-scroll" href="packages.html">Packages</a>
+                        <a class="page-scroll" href="packages.php">Packages</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="registration.html">Registration</a>
+                        <a class="page-scroll" href="registration.php">Registration</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="gallery.html">Gallery</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="contact.html">Contact</a>
+                        <a class="page-scroll" href="contact.php">Contact</a>
                     </li>
                 </ul>
             </div>
