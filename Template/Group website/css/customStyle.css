@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .portfolio-modal .modal-content {
     padding: 100px 0;
     min-height: 100%;
@@ -60,7 +61,7 @@
 .portfolio-modal .modal-backdrop {
     display: none;
     opacity: 0;
-}
+=======
 .agents{
   margin-top: 20px;
 }
@@ -79,4 +80,5 @@
 
 #contact-header{
   background-image:  url(../img/header4.jpg);
+>>>>>>> origin/master
 }

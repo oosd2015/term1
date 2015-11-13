@@ -3,7 +3,7 @@ include("../../Server/backbone/global.php");
 include("../../Server/backbone/modules/packages.inc.php");
 
 $packageInstance = new packages();
-$allPackages = $packageInstance->getPackages('newest'); //value of the arrays sorted asc. or desc.
+$allPackages = $packageInstance->getPackages('oldest'); //value of the arrays sorted asc. or desc.
 $htmlOutput = $packageInstance->htmlFormatter($allPackages);
 ?>
 
@@ -82,7 +82,11 @@ $htmlOutput = $packageInstance->htmlFormatter($allPackages);
                       <a class="page-scroll" href="index.php">Home</a>
                   </li>
                     <li>
+<<<<<<< HEAD
                         <a class="page-scroll" href="#">Packages</a>
+=======
+                        <a class="page-scroll" href="packages.php">Packages</a>
+>>>>>>> origin/master
                     </li>
                     <li>
                         <a class="page-scroll" href="registration.php">Registration</a>
