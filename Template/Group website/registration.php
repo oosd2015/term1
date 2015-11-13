@@ -37,7 +37,8 @@
       <link rel="stylesheet" href="css/animate.min.css" type="text/css">
 
       <!-- Custom CSS -->
-      <link rel="stylesheet" href="css/creative3.css" type="text/css">
+      <link rel="stylesheet" href="css/creative.css" type="text/css">
+      <link rel="stylesheet" href="css/customStyle.css" type="text/css">
 
       <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
       <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -83,7 +84,7 @@
         </div>
     </nav>
 
-    <header>
+    <header id="registration-header">
         <div class="header-content">
             <div class="header-content-inner">
                 <h1>Travel Experts Registration</h1>
@@ -217,17 +218,6 @@
 
     </fieldset>
     </form>
-
-
-
-    <aside class="bg-dark">
-        <div class="container text-center">
-            <div class="call-to-action">
-                <h2>Contact Us!</h2>
-                <a href="#" class="btn btn-default btn-xl wow tada">Contact Us!</a>
-            </div>
-        </div>
-    </aside>
 
     <section id="contact">
         <div class="container">

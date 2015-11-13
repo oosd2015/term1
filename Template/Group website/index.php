@@ -38,6 +38,7 @@
 
       <!-- Custom CSS -->
       <link rel="stylesheet" href="css/creative.css" type="text/css">
+      <link rel="stylesheet" href="css/customStyle.css" type="text/css">
 
       <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
       <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -83,7 +84,7 @@
         </div>
     </nav>
 
-    <header>
+    <header id="index-header">
         <div class="header-content">
             <div class="header-content-inner">
                 <h1>Welcome to Travel Experts</h1>
@@ -129,103 +130,6 @@
                </div>
         </form>
 
-        <section class="no-padding" id="packages">
-            <div class="container-fluid">
-                <div class="row no-gutter">
-                    <div class="col-lg-4 col-sm-6">
-                        <a href="#" class="packages-box">
-                            <img src="img/packages/1.jpg" class="img-responsive" alt="">
-                            <div class="packages-box-caption">
-                                <div class="packages-box-caption-content">
-                                    <div class="project-category text-faded">
-                                        Category
-                                    </div>
-                                    <div class="project-name">
-                                        Project Name
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a href="#" class="packages-box">
-                            <img src="img/packages/2.jpg" class="img-responsive" alt="">
-                            <div class="packages-box-caption">
-                                <div class="packages-box-caption-content">
-                                    <div class="project-category text-faded">
-                                        Category
-                                    </div>
-                                    <div class="project-name">
-                                        Project Name
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a href="#" class="packages-box">
-                            <img src="img/packages/3.jpg" class="img-responsive" alt="">
-                            <div class="packages-box-caption">
-                                <div class="packages-box-caption-content">
-                                    <div class="project-category text-faded">
-                                        Category
-                                    </div>
-                                    <div class="project-name">
-                                        Project Name
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a href="#" class="packages-box">
-                            <img src="img/packages/4.jpg" class="img-responsive" alt="">
-                            <div class="packages-box-caption">
-                                <div class="packages-box-caption-content">
-                                    <div class="project-category text-faded">
-                                        Category
-                                    </div>
-                                    <div class="project-name">
-                                        Project Name
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a href="#" class="packages-box">
-                            <img src="img/packages/5.jpg" class="img-responsive" alt="">
-                            <div class="packages-box-caption">
-                                <div class="packages-box-caption-content">
-                                    <div class="project-category text-faded">
-                                        Category
-                                    </div>
-                                    <div class="project-name">
-                                        Project Name
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a href="#" class="packages-box">
-                            <img src="img/packages/6.jpg" class="img-responsive" alt="">
-                            <div class="packages-box-caption">
-                                <div class="packages-box-caption-content">
-                                    <div class="project-category text-faded">
-                                        Category
-                                    </div>
-                                    <div class="project-name">
-                                        Project Name
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
     <section id="about">
         <div class="container">
             <div class="row">
@@ -269,17 +173,6 @@
         </div>
     </section>
 
-
-
-
-    <aside class="bg-dark">
-        <div class="container text-center">
-            <div class="call-to-action">
-                <h2>Contact Us!</h2>
-                <a href="#" class="btn btn-default btn-xl wow tada">Contact Us!</a>
-            </div>
-        </div>
-    </aside>
 
     <section id="contact">
         <div class="container">

@@ -1,3 +1,19 @@
 .agents{
   margin-top: 20px;
 }
+
+#index-header{
+  background-image: url(../img/header.jpg);
+}
+
+#packages-header{
+  background-image:  url(../img/header2.jpg);
+}
+
+#registration-header{
+  background-image:  url(../img/header3.jpg);
+}
+
+#contact-header{
+  background-image:  url(../img/header4.jpg);
+}
