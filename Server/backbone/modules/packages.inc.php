@@ -47,14 +47,14 @@ class packages{  //class that returns the array of packages sorted by date (eith
      }else{
       $endDatePassed = true;
      }
-     $value->startDatePassed = $startDatePassed; //push new value called "datePassed" to the $value array
-     $value->endDatePassed = $endDatePassed; //push new value called "datePassed" to the $value array
+     $value->startDatePassed = $startDatePassed; //push new value called "startDatePassed" to the $value array
+     $value->endDatePassed = $endDatePassed; //push new value called "endDatePassed" to the $value array
      //$value["datePassed"] = $hasDatePassed;
      //return $value;
     }
-    return $packagesArray;
+    return $packagesArray; //*****************************WHY IS THIS HERE?*********************************
   }
-  public function htmlFormatter($allPackages){
+  public function htmlFormatter($allPackages){ //create an html string
     $htmlModals = "";
     $htmlThumbnails = "";
     $counterId = 0;
@@ -69,9 +69,11 @@ class packages{  //class that returns the array of packages sorted by date (eith
       $html .=  $package->PkgAgencyCommission;
       */
       $counterId++; //1
-      $modalId = 'portfolioModal'.$counterId; //portfolioModal1
-      $anchorId = 'anchor'.$counterId;
+      $modalId = 'portfolioModal'.$counterId; //increments portfolioModal (******************WHAT IS portfolioModal???*******************)
+      $anchorId = 'anchor'.$counterId; //increments the anchor
 
+
+      //this is the portion of the string creating the thumbnails
       $htmlThumbnails .= '<span class="container col-md-6">
                                 <a href="#" id="'.$anchorId.'" class="packageClickBtn"  data-modal="'.$modalId.'" >
                                 <div class="row">
@@ -104,7 +106,8 @@ class packages{  //class that returns the array of packages sorted by date (eith
                                     </a>
                                     </span>';
 
-      $htmlModals .= '<div class="portfolio-modal modal fade" id="'.$modalId.'" tabindex="-1" role="dialog" aria-hidden="true">
+          //this is the portion of the string that creates the modal
+          $htmlModals .= '<div class="portfolio-modal modal fade" id="'.$modalId.'" tabindex="-1" role="dialog" aria-hidden="true">
           <div class="modal-content">
               <div class="close-modal" data-dismiss="modal">
                   <div class="lr">
@@ -146,6 +149,8 @@ class packages{  //class that returns the array of packages sorted by date (eith
     }
     //$htmlModals
     //$htmlThumbnails
+
+    //**********************NO CLUE WHAT THIS DOES*****************************
     $htmlScript = '<script type="text/javascript">
     $(".packageClickBtn").click(function(event){
 event.preventDefault();
@@ -153,7 +158,7 @@ $("#"+$(this).attr("data-modal")).modal("show");
 });
           </script>';
 
-   return array("modals"=>$htmlModals, "thumbnails"=>$htmlThumbnails, "script"=>$htmlScript);
+   return array("modals"=>$htmlModals, "thumbnails"=>$htmlThumbnails, "script"=>$htmlScript); //builds 
   }
 
 }
