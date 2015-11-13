@@ -1,3 +1,12 @@
+<?php
+include("../../Server/backbone/global.php");
+include("../../Server/backbone/modules/packages.inc.php");
+
+$packageInstance = new packages();
+$allPackages = $packageInstance->getPackages('oldest'); //value of the arrays sorted asc. or desc.
+$htmlOutput = $packageInstance->htmlFormatter($allPackages);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -28,6 +37,7 @@
       <title>Packages</title>
 
       <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+      <link rel="stylesheet" href="css/customStyle.css" type="text/css">
 
       <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
       <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
@@ -72,7 +82,11 @@
                       <a class="page-scroll" href="index.php">Home</a>
                   </li>
                     <li>
+<<<<<<< HEAD
+                        <a class="page-scroll" href="#">Packages</a>
+=======
                         <a class="page-scroll" href="packages.php">Packages</a>
+>>>>>>> origin/master
                     </li>
                     <li>
                         <a class="page-scroll" href="registration.php">Registration</a>
@@ -111,102 +125,10 @@
     </section>
 
     <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Caribbean Paradise</h2>
-                    <hr class="primary">
-                </div>
-            </div>
-        </div>
-        <div class="no-padding">
-            <div class="container-fluid">
-                <div class="row no-gutter">
-                    <div class="">
-                        <a href="#" class="packages-box">
-                            <img src="img/packages/1.jpg" class="img-responsive" alt="">
-                            <div class="packages-box-caption">
-                                <div class="packages-box-caption-content">
-                                    <div class="project-category text-faded">
-                                        Caribbean New Year
-                                    </div>
-                                    <div class="project-name">
-                                        Explore the beauty of the Caribbean!
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </section>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="gallery-box">
-                        <p class="text-muted">$4,000 <br/>
-                          Explore the beauty of the Caribbean!.</p>
-                    </div>
-                </div>
-              </div>
-          </div>
-          </section>
-
-                    <section id="package">
-                    <br/>
-                    <br/>
-                    <div class="">
-                        <a href="#" class="packages-box">
-                            <img src="img/packages/2.jpg" class="img-responsive" alt="">
-                            <div class="packages-box-caption">
-                                <div class="packages-box-caption-content">
-                                    <div class="project-category text-faded">
-                                        Polynesian Paradise
-                                    </div>
-                                    <div class="project-name">
-                                        Crystalline shores and eternal summer!
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="">
-                        <a href="#" class="packages-box">
-                            <img src="img/packages/3.jpg" class="img-responsive" alt="">
-                            <div class="packages-box-caption">
-                                <div class="packages-box-caption-content">
-                                    <div class="project-category text-faded">
-                                        European Vacation
-                                    </div>
-                                    <div class="project-name">
-                                        Fascinating history and a vibrant night life!
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="">
-                        <a href="#" class="packages-box">
-                            <img src="img/packages/4.jpg" class="img-responsive" alt="">
-                            <div class="packages-box-caption">
-                                <div class="packages-box-caption-content">
-                                    <div class="project-category text-faded">
-                                        Asian Expedition
-                                    </div>
-                                    <div class="project-name">
-                                        Embark in a brave new world!
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                </div>
-            </div>
-        </section>
+      <div class="row"> <!-- php packages here -->
+          <?php echo $htmlOutput['thumbnails']; ?>
+      </div> <!-- php packages end here -->
+                    </section>
 
     <section id="about">
         <div class="container">
@@ -271,6 +193,7 @@
         </div>
     </section>
 
+<?php echo $htmlOutput['modals']; ?>
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
@@ -284,6 +207,6 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="js/creative.js"></script>
-
+<?php echo $htmlOutput['script']; ?>
   </body>
 </html>
