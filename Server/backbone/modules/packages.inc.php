@@ -37,7 +37,7 @@ class packages{  //class that returns the array of packages sorted by date (eith
      $endMilli = (strtotime($value->PkgEndDate) * 1000); // convert to milliseconds
      $startDatePassed = false;
      $endDatePassed = false;
-     if($startMilli >= round(microtime(true) * 1000)){
+     if($startMilli >= round(microtime(true) * 1000)){ //microtime is current time
       $startDatePassed = false;
      }else{
       $startDatePassed = true;
@@ -84,7 +84,7 @@ class packages{  //class that returns the array of packages sorted by date (eith
                                     <div class="container-fluid">
                                         <div class="row no-gutter">
                                             <div class="">
-                                                
+
                                                     <img src="img/packages/1.jpg" class="img-responsive" alt="">
                                                     <div class="packages-box-caption">
                                                         <div class="packages-box-caption-content">
