@@ -29,6 +29,7 @@
 
       <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
 
+
       <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
       <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
       <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
@@ -38,6 +39,7 @@
 
       <!-- Custom CSS -->
       <link rel="stylesheet" href="css/creative5.css" type="text/css">
+      <link rel="stylesheet" href="css/customStyle.css" type="text/css">
 
       <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
       <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -111,59 +113,51 @@
         </div>
     </section>
 
-
     <section id="about">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Calgary Office</h2>
-                    <hr class="primary">
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="gallery-box">
-                    <div class="col-lg-12 text-center">
-                        <p class="text-muted">333 16 Ave Calgary, </br>
-                        AB T2M 1C4, Canada.</br>
-                        (403) 555-5671</br>
-                        hello@travelexperts.com</br>
-                      </p>
-                    </div>
-                </div>
-                <div class="container" id="agents">
-                    <div class="row">
-                        <div class="gallery-box">
-                            <div class="col-lg-12 text-center">
-                                <h3>Agents</h3>
-                            </div>
-                        </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div align="center">
-                    <div class="col-md-4"> <p class="text-muted">Jane Smith </br>
-                    (403) 456 3223</br>
-                    jsmith@travelexperts.com</br></br>
-                    </div>
-                  </div>
+<?php
+  include("../../server/backbone/global.php");
+  include("../../server/backbone/modules/agencies.inc.php");
 
-                  <div align="center">
-                    <div class="col-md-4"><p class="text-muted">John Peters </br>
-                    (403) 456 3228</br>
-                    jpeters@travelexperts.com</br></br>
-                    </div>
-                  </div>
+    //Get and print the agencies
+    $dB = new DB('travelexperts');
+    $query = "SELECT * FROM `agencies`";
+    $agencies = $dB->get($query);
 
-                  <div align="center">
-                    <div class="col-md-4"><p class="text-muted">Mary Jenkins </br>
-                    (403) 456 3227</br>
-                    mjenkins@travelexperts.com</br></br>
-                    </div>
-                  </div>
-                </div>
+    for ($i = 0; $i < count($agencies); $i++)
+    {
 
+      print ('<div class="row"><div class="col-lg-12 text-center">');
+      $agency = new Agency($agencies[$i]);
+      print ('<div class="gallery-box"><div class="col-lg-12 text-center">');
+      print ('<h2 class="section-heading">' . $agency->getAgncyCity() . ' Office</h2>');
+      print $agency->getAgenciesContactInfo(); //print the agency contacy info
+      print ('</div></div>');
+
+      print ('<div class="container"><div class="row">');
+      print ('<div class="gallery-box"><div class="col-lg-12 text-center"><h3>Agents</h3>');
+      print ('</div></div>');
+
+      //Now Get all the agents for each Agency and Print Them
+      $dB = new DB('travelexperts');
+      $myAgencyId = $agency->getAgencyId();
+      $query = "SELECT * FROM `agents` WHERE `AgencyId`='$myAgencyId'";
+      $agents = $dB->get($query);
+
+      for ($k = 0; $k < count($agents); $k++)
+      {
+        print ('<div align="center"><div class="col-md-4 agents" > ');
+        $agent = new Agent($agents[$k]);
+        print ($agent->getAgentContactInfo());
+        print ('</div></div>');
+      }
+
+
+      print ('</div></div>');
+      print ('</div></div>');
+    }
+
+?>
 
     <aside class="bg-dark">
         <div class="container text-center">

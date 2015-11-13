@@ -1,34 +1,6 @@
 <?php
-    include("../global.php");
 
 ///////////////////////////////////////////////////////////////////////////////
-
-/*******************************************************************************
-I need to move to the Contact Page Later
-*******************************************************************************/
-    //Get and print the agencies
-    $dB = new DB('travelexperts');
-    $query = "SELECT * FROM `agencies`";
-    $agencies = $dB->get($query);
-
-    for ($i = 0; $i < count($agencies); $i++)
-    {
-      $agency = new Agency($agencies[$i]);
-      print $agency->getAgenciesContactInfo(); //print the agency contacy info
-
-      //Now Get all the agents for each Agency and Print Them
-      $dB = new DB('travelexperts');
-      $myAgencyId = $agency->getAgencyId();
-      $query = "SELECT * FROM `agents` WHERE `AgencyId`='$myAgencyId'";
-      $agents = $dB->get($query);
-
-      for ($k = 0; $k < count($agents); $k++)
-      {
-        $agent = new Agent($agents[$k]);
-        print ($agent->getAgentContactInfo());
-      }
-    }
-/******************************************************************************/
 
     class Agency {
       private $myAgents = array();
@@ -117,11 +89,10 @@ I need to move to the Contact Page Later
       }
 
       public function getAgenciesContactInfo() {
-        $htmlString = "Agency: " . $this->AgencyId . "<br/>" .
-                      "Phone: " . $this->AgncyPhone . "<br/>" .
+        $htmlString = "Phone: " . $this->AgncyPhone . "<br/>" .
                       "Fax: " . $this->AgncyFax . "<br/>" .
-                      $this->AgncyAddress . " " . $this->AgncyCity . " " . $this->AgncyProv . "<br/>" .
-                      $this->AgncyPostal . " " . $this->AgncyCountry . "<br/>";
+                      $this->AgncyAddress . ", " . $this->AgncyCity . ", " . $this->AgncyProv . "<br/>" .
+                      $this->AgncyPostal . ", " . $this->AgncyCountry . "<br/>";
         return $htmlString;
       }
     }
@@ -225,9 +196,9 @@ I need to move to the Contact Page Later
 
             public function getAgentContactInfo() {
                 $htmlString = $this->getAgtFirstName() . " " . $this->getAgtMiddleInitial() . " " . $this->getAgtLastName() . "<br/>" .
+                              $this->getAgtPosition() . "<br/>" .
                               $this->getAgtBusPhone() . "<br/>" .
-                              "Phone: " . $this->getAgtBusPhone() . "<br/>" .
-                              "Email: " . $this->getAgtEmail() . "<br/>";
+                              $this->getAgtEmail() . "<br/>";
                 return $htmlString;
             }
       }
