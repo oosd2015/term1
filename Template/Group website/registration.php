@@ -109,45 +109,6 @@
         </div>
     </section>
 
-    <section id="login">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Login</h2>
-                    <hr class="primary">
-                </div>
-            </div>
-        </div>
-    </section>
-
-      <form class="form-horizontal">
-        <fieldset>
-
-          <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="textinput"></label>
-                <div class="col-md-4">
-                  <input id="textinput" name="textinput" type="text" placeholder="User Name" class="form-control input-md">
-                </div>
-            </div>
-        <!-- Password input-->
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="passwordinput"></label>
-              <div class="col-md-4">
-                <input id="passwordinput" name="passwordinput" type="password" placeholder="Password" class="form-control input-md">
-              </div>
-          </div>
-
-    <!-- Button -->
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="Login"></label>
-        <div class="col-md-4">
-          <button id="Login" name="Login" class="btn btn-primary">Login</button>
-        </div>
-    </div>
-      </fieldset>
-    </form>
-
     <section id="registration">
         <div class="container">
             <div class="row">
