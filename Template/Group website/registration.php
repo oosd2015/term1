@@ -120,65 +120,123 @@
         </div>
     </section>
 
-    <form class="form-horizontal">
+    <script>
+       function validate(myform)
+     {
+        var re = /^[a-z0-9_\.]+@([\-0-9a-z]+\.)+[a-z]{2,6}$/i;
+      if (!re.test(myform.CustEmail.value))
+      {
+         alert("Invalid email format");
+         myform.CustEmail.focus();
+         return false;
+      }
+      return true;
+     }
+
+    </script>
+    <form class="form-horizontal" action="bouncer.php" method="post" onsubmit="return validate(this)">
     <fieldset>
 
-
-    <!-- Text input-->
     <div class="form-group">
       <label class="col-md-4 control-label" for="textinput"></label>
-      <div class="col-md-4">
-      <input id="textinput" name="textinput" type="text" placeholder="First Name" class="form-control input-md" required="">
-
-      </div>
+        <div class="col-md-4">
+          <input name="CustFirstName" type="text" placeholder="First Name *"
+                 class="form-control input-md" required="required">
+        </div>
     </div>
 
-    <!-- Text input-->
     <div class="form-group">
       <label class="col-md-4 control-label" for=""></label>
-      <div class="col-md-4">
-      <input id="" name="" type="text" placeholder="Last Name" class="form-control input-md" required="">
-
-      </div>
+        <div class="col-md-4">
+          <input name="CustLastName" type="text" placeholder="Last Name *"
+                 class="form-control input-md" required="required">
+        </div>
     </div>
 
-    <!-- Text input-->
     <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput"></label>
-      <div class="col-md-4">
-      <input id="textinput" name="textinput" type="text" placeholder="Username" class="form-control input-md" required="">
+      <label class="col-md-4 control-label" for=""></label>
+        <div class="col-md-4">
+          <input name="CustAddress" type="text" placeholder="Address"
+                 class="form-control input-md" required="">
+       </div>
+    </div>
 
-      </div>
+    <div class="form-group">
+      <label class="col-md-4 control-label" for=""></label>
+        <div class="col-md-4">
+          <input name="CustCity" type="text" placeholder="City"
+                 class="form-control input-md" required="">
+        </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-4 control-label" for=""></label>
+        <div class="col-md-4">
+          <input name="CustProv" type="text" placeholder="Province/State"
+                 class="form-control input-md" required="">
+        </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-4 control-label" for=""></label>
+        <div class="col-md-4">
+          <input name="CustPostal" type="text" placeholder="Postal Code/Zip Code"
+                 class="form-control input-md" required="">
+        </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-4 control-label" for=""></label>
+        <div class="col-md-4">
+          <input name="CustCountry" type="text" placeholder="Country"
+                 class="form-control input-md" required="">
+        </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-4 control-label" for=""></label>
+        <div class="col-md-4">
+          <input name="CustHomePhone" type="text" placeholder="Home Phone"
+                 class="form-control input-md" required="">
+        </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-4 control-label" for=""></label>
+        <div class="col-md-4">
+          <input name="CustBusPhone" type="text" placeholder="Business Phone"
+                 class="form-control input-md" required="">
+        </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-md-4 control-label" for=""></label>
+        <div class="col-md-4">
+          <input name="CustEmail" type="email" placeholder="Email *"
+                 class="form-control input-md" required="required">
+
+        </div>
     </div>
 
     <!-- Password input-->
     <div class="form-group">
       <label class="col-md-4 control-label" for="passwordinput"></label>
-      <div class="col-md-4">
-        <input id="passwordinput" name="passwordinput" type="password" placeholder="Password" class="form-control input-md" required="">
-
-      </div>
+        <div class="col-md-4">
+          <input name="CustPassword" type="password" placeholder="Password *"
+                 class="form-control input-md" required="required">
+        </div>
     </div>
 
-    <!-- Text input-->
-    <div class="form-group">
-      <label class="col-md-4 control-label" for="textinput"></label>
-      <div class="col-md-4">
-      <input id="textinput" name="textinput" type="text" placeholder="Phone Number" class="form-control input-md">
-
-      </div>
-    </div>
 
     <!-- Button -->
     <div class="form-group">
       <label class="col-md-4 control-label" for="singlebutton"></label>
-      <div class="col-md-4">
-        <button id="singlebutton" name="singlebutton" class="btn btn-primary">Sign Up</button>
-      </div>
+        <div class="col-md-4">
+          <button id="singlebutton" name="singlebutton" class="btn btn-primary">Sign Up</button>
+       </div>
     </div>
-
     </fieldset>
-    </form>
+  </form>
 
     <section id="contact">
         <div class="container">
