@@ -123,7 +123,9 @@
     <script>
        function validate(myform)
      {
-        var re = /^[a-z0-9_\.]+@([\-0-9a-z]+\.)+[a-z]{2,6}$/i;
+        var re = /\A[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@
+                (?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\z/;
+        alert(myform.CustEmail.value);
       if (!re.test(myform.CustEmail.value))
       {
          alert("Invalid email format");
@@ -134,7 +136,7 @@
      }
 
     </script>
-    <form class="form-horizontal" action="bouncer.php" method="post" onsubmit="return validate(this)">
+    <form class="form-horizontal" method="post" onsubmit="return validate(this)">
     <fieldset>
 
     <div class="form-group">
@@ -157,7 +159,7 @@
       <label class="col-md-4 control-label" for=""></label>
         <div class="col-md-4">
           <input name="CustAddress" type="text" placeholder="Address"
-                 class="form-control input-md" required="">
+                 class="form-control input-md">
        </div>
     </div>
 
@@ -165,7 +167,7 @@
       <label class="col-md-4 control-label" for=""></label>
         <div class="col-md-4">
           <input name="CustCity" type="text" placeholder="City"
-                 class="form-control input-md" required="">
+                 class="form-control input-md">
         </div>
     </div>
 
@@ -173,7 +175,7 @@
       <label class="col-md-4 control-label" for=""></label>
         <div class="col-md-4">
           <input name="CustProv" type="text" placeholder="Province/State"
-                 class="form-control input-md" required="">
+                 class="form-control input-md">
         </div>
     </div>
 
@@ -181,7 +183,7 @@
       <label class="col-md-4 control-label" for=""></label>
         <div class="col-md-4">
           <input name="CustPostal" type="text" placeholder="Postal Code/Zip Code"
-                 class="form-control input-md" required="">
+                 class="form-control input-md">
         </div>
     </div>
 
@@ -189,7 +191,7 @@
       <label class="col-md-4 control-label" for=""></label>
         <div class="col-md-4">
           <input name="CustCountry" type="text" placeholder="Country"
-                 class="form-control input-md" required="">
+                 class="form-control input-md">
         </div>
     </div>
 
@@ -197,7 +199,7 @@
       <label class="col-md-4 control-label" for=""></label>
         <div class="col-md-4">
           <input name="CustHomePhone" type="text" placeholder="Home Phone"
-                 class="form-control input-md" required="">
+                 class="form-control input-md">
         </div>
     </div>
 
@@ -205,7 +207,7 @@
       <label class="col-md-4 control-label" for=""></label>
         <div class="col-md-4">
           <input name="CustBusPhone" type="text" placeholder="Business Phone"
-                 class="form-control input-md" required="">
+                 class="form-control input-md">
         </div>
     </div>
 
@@ -213,7 +215,7 @@
       <label class="col-md-4 control-label" for=""></label>
         <div class="col-md-4">
           <input name="CustEmail" type="email" placeholder="Email *"
-                 class="form-control input-md" required="required">
+                 class="form-control input-md" required="required>
 
         </div>
     </div>
@@ -232,7 +234,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="singlebutton"></label>
         <div class="col-md-4">
-          <button id="singlebutton" name="singlebutton" class="btn btn-primary">Sign Up</button>
+          <button id="singlebutton" type="submit" class="btn btn-primary">Sign Up</button>
        </div>
     </div>
     </fieldset>
