@@ -68,7 +68,7 @@ Class to handle user login and the login page
         $myUser = new Customer($result);
         $_SESSION["user"] = $myUser;
         //print ($_SESSION["user"]->getCustFirstName() . " is logged in!");
-        if(isset($_SESSION["packageId"])){
+        if(isset($_SESSION["packageId"]) && !empty($_SESSION["packageId"])){
         header("location: bookings.php");
         }else{
           header("location: packages.php");
