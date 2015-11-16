@@ -5,7 +5,6 @@
   if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $login = new LoginHandle ($_REQUEST);
     $login->processLogin();
-    print "Hello";
   }
 
 ?>
