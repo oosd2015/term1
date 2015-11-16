@@ -1,3 +1,14 @@
+<?php
+  include ("../../Server/backbone/modules/registration.inc.php");
+  include ("../../Server/backbone/global.php");
+
+  if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $registration = new RegistrationHandle ($_REQUEST);
+    $registration->processRegistration();
+  }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -136,7 +147,9 @@
      }
 
     </script>
-    <form class="form-horizontal" method="post" onsubmit="return validate(this)">
+
+    <!--Change action later to redirect user-->
+    <form class="form-horizontal" action="registration.php" method="post" onsubmit="return validate(this)">
     <fieldset>
 
     <div class="form-group">
@@ -215,12 +228,10 @@
       <label class="col-md-4 control-label" for=""></label>
         <div class="col-md-4">
           <input name="CustEmail" type="email" placeholder="Email *"
-                 class="form-control input-md" required="required>
-
+                 class="form-control input-md" required="required">
         </div>
     </div>
 
-    <!-- Password input-->
     <div class="form-group">
       <label class="col-md-4 control-label" for="passwordinput"></label>
         <div class="col-md-4">
@@ -228,7 +239,6 @@
                  class="form-control input-md" required="required">
         </div>
     </div>
-
 
     <!-- Button -->
     <div class="form-group">

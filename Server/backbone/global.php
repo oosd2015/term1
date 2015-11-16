@@ -1,4 +1,7 @@
 <?php
+//Ensure Sessions start before everything!
+session_start();
+
 include("globalExtensions.php");
 include("modules/messages.inc.php");
 
@@ -26,7 +29,7 @@ include("modules/messages.inc.php");
       }
       return $mydb;
 		}
-		public function get($query) {
+    public function get($query) {
 			$db = $this->connect();
 			$result = $db->query($query);
       $results;
@@ -34,16 +37,48 @@ include("modules/messages.inc.php");
         $this->msg = new ErrorMsg("Could not complete the query.");
         $db->close();
         return false;
-      }else{
-        while ($row = $result->fetch_object()) {
-  				$results[] = $row;
-  			}
+      } else {
+        /*
+        before we start fetching objects from rows, we need to make sure we
+        actually returned a row
+        */
+        if ($result->num_rows === 0) {
+          $results = 0;
+        } else {
+          while ($row = $result->fetch_object()) {
+    				$results[] = $row;
+    			}
+        }
         $result->free();
         $this->msg = new SuccessMsg("Query Complete.");
         $db->close();
-  			return $results;
+        return $results;
       }
 		}
+
+    public function getFields($query) {
+      $db = $this->connect();
+      $result = $db->query($query);
+      $results;
+      if(!$result){
+        $this->msg = new ErrorMsg("Could not complete the query.");
+        $db->close();
+        return false;
+      }elseif($result->num_rows === 0){
+        $this->msg = new ErrorMsg("Could not complete the query.");
+        $db->close();
+        return false;
+      }else{
+        while ($field = $result->fetch_field()) {
+          $results[] = $field->name;
+        }
+        $result->free();
+        $this->msg = new SuccessMsg("Query Complete.");
+        $db->close();
+        return $results;
+      }
+    }
+
     public function set($query) {
       $db = $this->connect();
       $result = $db->query($query);

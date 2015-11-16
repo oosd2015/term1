@@ -1,3 +1,14 @@
+<?php
+  include ("../../Server/backbone/modules/login.inc.php");
+  include ("../../Server/backbone/global.php");
+
+  if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $login = new LoginHandle ($_REQUEST);
+    $login->processLogin();
+    print "Hello";
+  }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -95,14 +106,14 @@
         </div>
     </section>
 
-      <form class="form-horizontal">
+      <form class="form-horizontal" action="login.php" method="post">
         <fieldset>
 
           <!-- Text input-->
             <div class="form-group">
               <label class="col-md-4 control-label" for="textinput"></label>
                 <div class="col-md-4">
-                  <input name="textinput" type="text" placeholder="User Name"
+                  <input name="CustEmail" type="email" placeholder="Email"
                          required="required" class="form-control input-md">
                 </div>
             </div>
@@ -110,7 +121,7 @@
           <div class="form-group">
             <label class="col-md-4 control-label" for="passwordinput"></label>
               <div class="col-md-4">
-                <input name="passwordinput" type="password" placeholder="Password"
+                <input name="CustPassword" type="password" placeholder="Password"
                        required="required" class="form-control input-md">
               </div>
           </div>
