@@ -109,10 +109,10 @@ class packages{  //class that returns the array of packages sorted by date (eith
 
           //this is the portion of the string that creates the modal
           $startDateDisplay = ($package->startDatePassed == true) ?
-          '<span style="color:gray;text-decoration:line-through">'.date('F j, Y', strtotime($package->PkgStartDate)).'</span>' : date('F j, Y', strtotime($package->PkgStartDate));;
+          '<span style="color:red;font-weight:bold; text-decoration:line-through">'.date('F j, Y', strtotime($package->PkgStartDate)).'</span>' : date('F j, Y', strtotime($package->PkgStartDate));;
 
-          $endDateDisplay = ($package->startDatePassed == true) ?
-          '<span style="color:gray;text-decoration:line-through">'.date('F j, Y', strtotime($package->PkgEndDate)).'</span' : date('F j, Y', strtotime($package->PkgStartDate));
+          $endDateDisplay = ($package->endDatePassed == true) ?
+          '<span style="color:red;font-weight:bold; text-decoration:line-through">'.date('F j, Y', strtotime($package->PkgEndDate)).'</span' : date('F j, Y', strtotime($package->PkgEndDate));
 
           $htmlModals .= '<div class="portfolio-modal modal fade" id="'.$modalId.'" tabindex="-1" role="dialog" aria-hidden="true">
           <div class="modal-content">
@@ -144,7 +144,10 @@ class packages{  //class that returns the array of packages sorted by date (eith
                                       </strong>
                                   </li>
                               </ul>
-                              <button type="button" class="btn btn-info" data-dismiss="modal"><i class="fa fa-cart-plus"></i> Order Now!</button>
+                              <form method="post" action="orderNow.php">
+                              <input type="hidden" name="packageId" value="'.$package->PackageId.'">
+                              <button type="submit" class="btn btn-info"><i class="fa fa-cart-plus"></i> Order Now!</button>
+                              </form>
                           </div>
                       </div>
                   </div>

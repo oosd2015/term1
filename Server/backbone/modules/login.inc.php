@@ -67,18 +67,24 @@ Class to handle user login and the login page
         $result = $result[0];
         $myUser = new Customer($result);
         $_SESSION["user"] = $myUser;
-        print ($_SESSION["user"]->getCustFirstName() . " is logged in!");
+        //print ($_SESSION["user"]->getCustFirstName() . " is logged in!");
+        if(isset($_SESSION["packageId"])){
+        header("location: bookings.php");
+        }else{
+          header("location: packages.php");
+        }
         return true;
       }
     }
 
     //Function to check if a user is logged in; maybe move to global.php
-    public function loggedIn() {
-      if ( isset($_SESSION["user"]) && !empty($_SESSION["user"]) ) {
-        return true;
-      } else {
-        return false;
-      }
+  }
+
+  function loggedIn() {
+    if ( isset($_SESSION["user"]) && !empty($_SESSION["user"]) ) {
+      return true;
+    } else {
+      return false;
     }
   }
  ?>
