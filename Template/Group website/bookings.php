@@ -107,10 +107,9 @@
 
       <form class="form-horizontal" action="bookings.php" method="post">
         <fieldset>
-
-            <div>
-                <!--Package info-->
-            </div>
+          <div>
+            <a>Welcome   
+          </div>
 
           <div>
             <!--Package info-->

@@ -109,27 +109,6 @@
         </div>
     </section>
 
-    <section id="packages">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Packages on Sale</h2>
-                    <hr class="primary">
-                </div>
-            </div>
-        </div>
-    </section>
-
-        <form action="?" method="">
-               <div id="dates">
-                   <label for="searchdates">Select your holiday dates:</label><br>
-                   <label for="fromdate">From:<textarea id="fromdate" name="fromdate" rows="1" cols="5"></textarea></label>
-                   <lablel for="todate">To:<textarea id="todate" name="todate" rows="1" cols="5"></textarea></label>
-               </div>
-               <div><input type="submit" value="Search"/>
-               </div>
-        </form>
-
     <section id="about">
         <div class="container">
             <div class="row">
