@@ -171,32 +171,32 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for=""></label>
         <div class="col-md-4">
-          <input name="CustAddress" type="text" placeholder="Address"
-                 class="form-control input-md">
+          <input name="CustAddress" type="text" placeholder="Address *"
+                 class="form-control input-md" required="required">
        </div>
     </div>
 
     <div class="form-group">
       <label class="col-md-4 control-label" for=""></label>
         <div class="col-md-4">
-          <input name="CustCity" type="text" placeholder="City"
-                 class="form-control input-md">
+          <input name="CustCity" type="text" placeholder="City *"
+                 class="form-control input-md" required="required">
         </div>
     </div>
 
     <div class="form-group">
       <label class="col-md-4 control-label" for=""></label>
         <div class="col-md-4">
-          <input name="CustProv" type="text" placeholder="Province/State"
-                 class="form-control input-md">
+          <input name="CustProv" type="text" placeholder="Province/State *"
+                 class="form-control input-md" required="required">
         </div>
     </div>
 
     <div class="form-group">
       <label class="col-md-4 control-label" for=""></label>
         <div class="col-md-4">
-          <input name="CustPostal" type="text" placeholder="Postal Code/Zip Code"
-                 class="form-control input-md">
+          <input name="CustPostal" type="text" placeholder="Postal Code/Zip Code *"
+                 class="form-control input-md" required="required">
         </div>
     </div>
 
@@ -219,8 +219,8 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for=""></label>
         <div class="col-md-4">
-          <input name="CustBusPhone" type="text" placeholder="Business Phone"
-                 class="form-control input-md">
+          <input name="CustBusPhone" type="text" placeholder="Business Phone *"
+                 class="form-control input-md" required="required">
         </div>
     </div>
 
@@ -228,7 +228,8 @@
       <label class="col-md-4 control-label" for=""></label>
         <div class="col-md-4">
           <input name="CustEmail" type="email" placeholder="Email *"
-                 class="form-control input-md" required="required">
+                 class="form-control input-md" pattern="/\A[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\z/"
+                 title="Enter a correct email" required="required">
         </div>
     </div>
 
