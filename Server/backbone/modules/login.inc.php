@@ -55,7 +55,7 @@ Class to handle user login and the login page
       //retrieve the customer that matches the email and password
       $query = "SELECT * FROM `customers` WHERE `CustEmail` = '$this->email' AND  `CustPassword` = '$this->password'";
       $dB = new DB('travelexperts');
-      $result = $dB->get($query);
+      $result = $dB->getAssoc($query);
 
       //make sure the login works
       if ( !($this->validateLogin($result)) ) {
@@ -64,8 +64,9 @@ Class to handle user login and the login page
         return false;
       } else {
         //log the user in
-        $_SESSION["user"] = new Customer($result);
-        
+        $result = $result[0];
+        $myUser = new Customer($result);
+        $_SESSION["user"] = $myUser;
         print ($_SESSION["user"]->getCustFirstName() . " is logged in!");
         return true;
       }

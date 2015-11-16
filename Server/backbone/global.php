@@ -56,6 +56,33 @@ include("modules/messages.inc.php");
       }
 		}
 
+    public function getAssoc($query) {
+      $db = $this->connect();
+      $result = $db->query($query);
+      $results;
+      if(!$result){
+        $this->msg = new ErrorMsg("Could not complete the query.");
+        $db->close();
+        return false;
+      } else {
+        /*
+        before we start fetching objects from rows, we need to make sure we
+        actually returned a row
+        */
+        if ($result->num_rows === 0) {
+          $results = 0;
+        } else {
+          while ($row = $result->fetch_assoc()) {
+            $results[] = $row;
+          }
+        }
+        $result->free();
+        $this->msg = new SuccessMsg("Query Complete.");
+        $db->close();
+        return $results;
+      }
+    }
+
     public function getFields($query) {
       $db = $this->connect();
       $result = $db->query($query);

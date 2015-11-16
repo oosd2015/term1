@@ -1,3 +1,8 @@
+<?php
+  include ("../../Server/backbone/modules/agencies.inc.php");
+  include ("../../Server/backbone/global.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -112,13 +117,11 @@
 
     <section id="about">
         <div class="container">
-<?php
-  include ("../../Server/backbone/modules/agencies.inc.php");
-  include ("../../Server/backbone/global.php");
 
-  $contactInfo = new ContactView();
-  print $contactInfo->getContactHtml();
-?>
+    <?php
+      $contactInfo = new ContactView();
+      print $contactInfo->getContactHtml();
+    ?>
 
     <section id="contact">
         <div class="container">
