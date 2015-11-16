@@ -52,7 +52,7 @@ class packages{  //class that returns the array of packages sorted by date (eith
      //$value["datePassed"] = $hasDatePassed;
      //return $value;
     }
-    return $packagesArray; //*****************************WHY IS THIS HERE?*********************************
+    return $packagesArray; //in addPackages() we called processArray() to add $startDatePassed and $startDateEnd to return an updated $packagesArray
   }
   public function htmlFormatter($allPackages){ //create an html string
     $htmlModals = "";
@@ -67,10 +67,11 @@ class packages{  //class that returns the array of packages sorted by date (eith
       $html .=  $package->PkgDesc;
       $html .=  $package->PkgBasePrice;
       $html .=  $package->PkgAgencyCommission;
+      $html .=  $package->PkgImage;
       */
-      $counterId++; //1
-      $modalId = 'portfolioModal'.$counterId; //increments portfolioModal (******************WHAT IS portfolioModal???*******************)
-      $anchorId = 'anchor'.$counterId; //increments the anchor
+      $counterId++;
+      $modalId = 'portfolioModal'.$counterId; //this is the id for the modal, this increments it so we have a new id for each new modal
+      $anchorId = 'anchor'.$counterId; //this creates the id for the anchor, and increments it so we have a new id for each new anchor
 
 
       //this is the portion of the string creating the thumbnails
@@ -87,7 +88,7 @@ class packages{  //class that returns the array of packages sorted by date (eith
                                         <div class="row no-gutter">
                                             <div class="">
 
-                                                    <img src="img/packages/1.jpg" class="img-responsive" alt="">
+                                                    <img src="img/packages/'.$package->PkgImage.'" class="img-responsive" alt="">
                                                     <div class="packages-box-caption">
                                                         <div class="packages-box-caption-content">
                                                             <div class="project-category text-faded">
@@ -107,6 +108,12 @@ class packages{  //class that returns the array of packages sorted by date (eith
                                     </span>';
 
           //this is the portion of the string that creates the modal
+          $startDateDisplay = ($package->startDatePassed == true) ?
+          '<span style="color:gray;text-decoration:line-through">'.date('F j, Y', strtotime($package->PkgStartDate)).'</span>' : date('F j, Y', strtotime($package->PkgStartDate));;
+
+          $endDateDisplay = ($package->startDatePassed == true) ?
+          '<span style="color:gray;text-decoration:line-through">'.date('F j, Y', strtotime($package->PkgEndDate)).'</span' : date('F j, Y', strtotime($package->PkgStartDate));
+
           $htmlModals .= '<div class="portfolio-modal modal fade" id="'.$modalId.'" tabindex="-1" role="dialog" aria-hidden="true">
           <div class="modal-content">
               <div class="close-modal" data-dismiss="modal">
@@ -121,23 +128,23 @@ class packages{  //class that returns the array of packages sorted by date (eith
                           <div class="modal-body">
                               <h2>'.$package->PkgName.'</h2>
                               <hr class="star-primary">
-                              <img src="img/packages/1.JPG" class="img-responsive img-centered" alt="">
+                              <img src="img/packages/'.$package->PkgImage.'" class="img-responsive img-centered" alt="">
                               <p>'.$package->PkgDesc.'</p>
                               <ul class="list-inline item-details">
                                   <li>Start Date:
-                                      <strong><a href="">'.$package->PkgStartDate.'</a>
+                                      <strong>'.$startDateDisplay.'
                                       </strong>
                                   </li>
                                   <li>End Date:
-                                      <strong><a href="">'.$package->PkgEndDate.'</a>
+                                      <strong>'.$endDateDisplay.'
                                       </strong>
                                   </li>
                                   <li>Price:
-                                      <strong><a href="">$'.$package->PkgBasePrice.'</a>
+                                      <strong>$'.number_format($package->PkgBasePrice, 2, '.', ',').'
                                       </strong>
                                   </li>
                               </ul>
-                              <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                              <button type="button" class="btn btn-info" data-dismiss="modal"><i class="fa fa-cart-plus"></i> Order Now!</button>
                           </div>
                       </div>
                   </div>
@@ -150,7 +157,8 @@ class packages{  //class that returns the array of packages sorted by date (eith
     //$htmlModals
     //$htmlThumbnails
 
-    //**********************NO CLUE WHAT THIS DOES*****************************
+
+//whenever we click on an anchor with class="packageClickBtn", it will open a modal.
     $htmlScript = '<script type="text/javascript">
     $(".packageClickBtn").click(function(event){
 event.preventDefault();
@@ -158,7 +166,7 @@ $("#"+$(this).attr("data-modal")).modal("show");
 });
           </script>';
 
-   return array("modals"=>$htmlModals, "thumbnails"=>$htmlThumbnails, "script"=>$htmlScript); //builds 
+   return array("modals"=>$htmlModals, "thumbnails"=>$htmlThumbnails, "script"=>$htmlScript);
   }
 
 }
