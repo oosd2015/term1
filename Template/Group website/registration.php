@@ -131,23 +131,6 @@
         </div>
     </section>
 
-    <script>
-       function validate(myform)
-     {
-        var re = /\A[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@
-                (?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\z/;
-        alert(myform.CustEmail.value);
-      if (!re.test(myform.CustEmail.value))
-      {
-         alert("Invalid email format");
-         myform.CustEmail.focus();
-         return false;
-      }
-      return true;
-     }
-
-    </script>
-
     <!--Change action later to redirect user-->
     <form class="form-horizontal" action="registration.php" method="post" onsubmit="return validate(this)">
     <fieldset>
@@ -228,8 +211,8 @@
       <label class="col-md-4 control-label" for=""></label>
         <div class="col-md-4">
           <input name="CustEmail" type="email" placeholder="Email *"
-                 class="form-control input-md" pattern="/\A[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\z/"
-                 title="Enter a correct email" required="required">
+                 class="form-control input-md" pattern="/\A[a-z0-9!#$%'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\z/"
+                 required="required">
         </div>
     </div>
 
