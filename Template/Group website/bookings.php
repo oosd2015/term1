@@ -8,7 +8,6 @@
   }
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -95,45 +94,37 @@
         </div>
     </nav>
 
-    <section id="login">
+    <section id="bookings">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Login</h2>
+                    <h2 class="section-heading">Bookings</h2>
                     <hr class="primary">
                 </div>
             </div>
         </div>
     </section>
 
-      <form class="form-horizontal" action="login.php" method="post">
+      <form class="form-horizontal" action="bookings.php" method="post">
         <fieldset>
 
-          <!-- Text input-->
-            <div class="form-group">
-              <label class="col-md-4 control-label" for="textinput"></label>
-                <div class="col-md-4">
-                  <input name="CustEmail" type="email" placeholder="Email"
-                         required="required" class="form-control input-md">
-                </div>
+            <div>
+                <!--Package info-->
             </div>
-        <!-- Password input-->
-          <div class="form-group">
-            <label class="col-md-4 control-label" for="passwordinput"></label>
-              <div class="col-md-4">
-                <input name="CustPassword" type="password" placeholder="Password"
-                       required="required" class="form-control input-md">
-              </div>
+
+          <div>
+            <!--Package info-->
           </div>
 
-    <!-- Button -->
+    <!--Booking/cancellings Buttons-->
     <div class="form-group">
-      <label class="col-md-4 control-label" for="Login"></label>
-        <div class="col-md-4">
-          <button id="Login" name="Login" class="btn btn-primary">Login</button>
-          <a href="registration.php"> or click here to register </a>
+      <label class="col-md-4 control-label" for="Bookings"></label>
+        <div class="col-lg-12 text-center">
+          <button id="Bookings" name="Bookings" class="btn btn-primary">Book</button>
+          <button id="Cancelling" name="Cancelling" class="btn btn-primary">Cancel</button>
         </div>
     </div>
+
       </fieldset>
     </form>
 
