@@ -210,8 +210,7 @@ class Agent {
                       . 'Phone: ' . $agency->getAgncyPhone() . '<br/>'
                       . 'Fax: ' . $agency->getAgncyFax() . '<br/>'
                       . $agency->getAgncyAddress() . ', ' . $agency->getAgncyCity() . ', ' . $agency->getAgncyProv() . '<br/>'
-                      . $agency->getAgncyPostal() . ', ' . $agency->getAgncyCountry() . '<br/></strong><hr/>
-                  <h3>Agents</h3>';
+                      . $agency->getAgncyPostal() . ', ' . $agency->getAgncyCountry() . '<br/></strong><hr/>';
 
         //get agents and pass in a the current agency
         $html .= $this->getAgentsHtml($agency);
@@ -233,11 +232,11 @@ class Agent {
       //start looping through agents
       for ($k = 0; $k < count($agents); $k++) {
         $agent = new Agent($agents[$k]);
-        $html .= '<span class="col-md-4 agents">';
+        $html .= '<div class="col-md-4" style="padding:0.5em">';
         $html .=  '<strong>' . $agent->getAgtFirstName() . ' ' . $agent->getAgtMiddleInitial() . ' ' . $agent->getAgtLastName() . '</strong><br/>' .
                   $agent->getAgtPosition() . '<br/>' .
                   $agent->getAgtBusPhone() . '<br/>' .
-                  $agent->getAgtEmail() . '</span>';
+                  $agent->getAgtEmail() . '<br/></div>';
       }
       $html .= '</div>';
       return $html;
