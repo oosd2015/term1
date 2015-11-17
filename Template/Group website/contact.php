@@ -96,24 +96,9 @@
                 <h1>Travel Experts Contacts</h1>
                 <hr>
                 <p> We will make your dream destination come true!</p>
-                <a href="#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
             </div>
         </div>
     </header>
-
-
-    <section class="bg-primary">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">The perfect holiday is waiting for you!</h2>
-                    <hr class="light">
-                    <p class="text-faded">Live your dream today!</p>
-                    <a href="#" class="btn btn-default btn-xl">Contact us</a>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <section id="about">
         <div class="container">
@@ -123,25 +108,16 @@
       print $contactInfo->getContactHtml();
     ?>
 
-    <section id="contact">
+    <footer>
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">Are you ready to experience the time of your life?</h2>
-                    <hr class="primary">
-                    <p>Get in touch with us to create your dream destination.</p>
-                </div>
-                <div class="col-lg-4 col-lg-offset-2 text-center">
-                    <i class="fa fa-phone fa-3x wow bounceIn"></i>
-                    <p>403-555-5671</p>
-                </div>
-                <div class="col-lg-4 text-center">
-                    <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
-                    <p><a href="mailto:hello@travelexperts.com">hello@travelexperts.com</a></p>
+                <div class="col-lg-8 col-lg-offset-2 text-center" style="margin-top:2em">
+                  <hr/>
+                  <p><strong>Copyright 2015 OOSD Travel Experts</strong></p>
                 </div>
             </div>
         </div>
-    </section>
+    </footer>
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>

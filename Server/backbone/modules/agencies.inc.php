@@ -195,7 +195,7 @@ class Agent {
 
     //function to return html for agencies and their agents in a bootstrap layout
     public function getAgenciesHtml() {
-      $html = '<div class="row"><div class="col-lg-12 text-center">';
+      $html = '<div class="row">';
 
       //call the db global class to perform queries
       $dB = new DB('travelexperts');
@@ -205,23 +205,18 @@ class Agent {
       //start looping through agencies
       for ($i = 0; $i < count($agencies); $i++) {
         $agency = new Agency($agencies[$i]);
-        $html .= '<div class="gallery-box"><div class="col-lg-12 text-center">
-                    <h2 class="section-heading">' . $agency->getAgncyCity() . ' Office</h2>
-                    <div>'
+        $html .= '<div class="row"><div class="col-md-12 text-center">
+                    <h2 class="section-heading" style="background-color:#f05f40; color:white; padding:.5em; margin:1em; border-radius:10px;">' . $agency->getAgncyCity() . ' Office</h2><strong>'
                       . 'Phone: ' . $agency->getAgncyPhone() . '<br/>'
                       . 'Fax: ' . $agency->getAgncyFax() . '<br/>'
                       . $agency->getAgncyAddress() . ', ' . $agency->getAgncyCity() . ', ' . $agency->getAgncyProv() . '<br/>'
-                      . $agency->getAgncyPostal() . ', ' . $agency->getAgncyCountry() . '<br/>
-                    </div>
-                  </div></div>
-                  <div class="container"><div class="row">
-                  <div class="gallery-box"><div class="col-lg-12 text-center"><h3>Agents</h3>
-                  </div></div>';
+                      . $agency->getAgncyPostal() . ', ' . $agency->getAgncyCountry() . '<br/></strong><hr/>
+                  <h3>Agents</h3>';
 
         //get agents and pass in a the current agency
         $html .= $this->getAgentsHtml($agency);
       }
-      $html .= '</div></div></div></div>';
+      $html .= '</div></div></div>';
       return $html;
     }
 
@@ -234,16 +229,17 @@ class Agent {
       $dB = new DB('travelexperts');
       $query = "SELECT * FROM `agents` WHERE `AgencyId`='$myAgencyId'";
       $agents = $dB->get($query);
-
+      $html .= '<div class="row" style="text-align:center">';
       //start looping through agents
       for ($k = 0; $k < count($agents); $k++) {
         $agent = new Agent($agents[$k]);
-        $html .= '<div align="center"><div class="col-md-4 agents" >';
-        $html .=  $agent->getAgtFirstName() . ' ' . $agent->getAgtMiddleInitial() . ' ' . $agent->getAgtLastName() . '<br/>' .
+        $html .= '<span class="col-md-4 agents">';
+        $html .=  '<strong>' . $agent->getAgtFirstName() . ' ' . $agent->getAgtMiddleInitial() . ' ' . $agent->getAgtLastName() . '</strong><br/>' .
                   $agent->getAgtPosition() . '<br/>' .
                   $agent->getAgtBusPhone() . '<br/>' .
-                  $agent->getAgtEmail() . '</div></div>';
+                  $agent->getAgtEmail() . '</span>';
       }
+      $html .= '</div>';
       return $html;
     }
   }
