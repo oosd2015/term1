@@ -104,17 +104,7 @@
             </div>
         </div>
     </section>
-
-      <form class="form-horizontal" action="bookings.php" method="post">
-        <fieldset>
-          <div>
-            <a>Welcome   
-          </div>
-
-          <div>
-            <!--Package info-->
-          </div>
-
+    
     <!--Booking/cancellings Buttons-->
     <div class="form-group">
       <label class="col-md-4 control-label" for="Bookings"></label>
