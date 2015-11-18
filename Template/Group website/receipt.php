@@ -13,20 +13,22 @@ if(loggedIn()){
   $grandTotal = "";
   $specialRequests = "";
   $numberTravelers = "";
-  $departDate = date('F j, Y', strtotime($package->PkgStartDate));
-  $returnDate = date('F j, Y', strtotime($package->PkgEndDate));
-  $confirmationNumber = randomString();
+  $departDate = date('F j, Y', strtotime($package[0]->PkgStartDate));
+  $returnDate = date('F j, Y', strtotime($package[0]->PkgEndDate));
+  define("CONFIRMATIONNUMBER",randomString());
   if($_POST){
     $grandTotal = $_POST['grandTotal'];
     $specialRequests = $_POST['specialRequests'];
     $numberTravelers = $_POST['numberTravelers'];
 
-/*
+    //Add booking to database
     $db = new DB('travelexperts');
-    $query = "INSERT INTO `orders` (`confirmation`,`customerId`,`packageId`, `date`)
-    VALUES ( '".."', '".."', '".."', '".."')";
+    $query = "INSERT INTO `bookings` (`BookingNo`,`TravelerCount`, `CustomerId`, `TripTypeId`, `PackageId`)
+    VALUES ( '".CONFIRMATIONNUMBER."', '".$numberTravelers."', '".$customer->getCustomerId()."', 'L', '".$_SESSION["packageId"]."')";
     $customers = $db->set($query);
-    */
+    /*No need to add data to booking details;
+    that info can all be gathered by joins*/
+
   }else{
     header("Location: packages.php");
   }
@@ -146,7 +148,7 @@ header("Location: login.php");
     						<div class="row">
     							<div class="col-sm-6">
     								<span>Receipt</span>
-    								<strong>#<?php echo $confirmationNumber; ?></strong>
+    								<strong>#<?php echo CONFIRMATIONNUMBER; ?></strong>
     							</div>
     							<div class="col-sm-6 text-right">
     								<span>Payment Date</span>
@@ -202,8 +204,8 @@ header("Location: login.php");
     							</p>
                   <br>
     						</div>
-
                 <div class="thanks">
+                  <a href="plane.php?travellers=<?php print($numberTravelers) ?>" target="_blank" class="btn btn-primary" style="margin: 2em 0 2em">Select Seat</a>
                   <p><strong>Thank you!</strong>
                   </p>
                 </div>

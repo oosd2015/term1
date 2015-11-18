@@ -1,3 +1,7 @@
+<?php
+$numTravellers = $_GET["travellers"]
+?>
+
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -6,6 +10,14 @@
 /*#drag1 {padding:-10px;}*/
 </style>
 <script>
+
+var numTravellers = <?php echo $numTravellers ?>;
+
+var plane = {
+              rows:21,
+              columns:6,
+            };
+
 function allowDrop(ev) {
     ev.preventDefault();
 }
@@ -21,11 +33,6 @@ function drop(ev) {
     var seat = ev.target.id;
     document.getElementById("seatBtn").innerHTML = "Select Seat " + seat;
 }
-
-var plane = {
-              rows:21,
-              columns:6,
-            };
 
 </script>
 
@@ -47,42 +54,61 @@ var plane = {
 </head>
 <body id="page-top">
 
-  <section id="seatPicker" class="col-lg-8 col-lg-offset-2 text-center" align="center">
-    <div class="container bg-primary">
-        <div class="row">
-            <div>
-                <h2>Drag your seat onto a row and column to select your prefered seat!</h2>
-            </div>
-        </div>
+  <section class="row">
+    <div class="row" style="text-align:center">
+
+      <span class="col-xs-12 bg-primary" style="min-width:1200px">
+        <h2>Drag the chair image onto a row and column to select your prefered seat!</h2>
+      </span>
+
     </div>
 
-  <!--This div allows the chair to be moved back to its original location-->
-  <div style="min-height:50px" ondrop="drop(event)" ondragover="allowDrop(event)">
-    <img id="drag1" src="img/chair.svg" height="32px" draggable="true" ondragstart="drag(event)">
-  </div>
-  <div style="display:flex">
-  <script>
-    for (var i = 0; i < plane.rows; i++) {
-      document.write('<div><div align="center" style="background-color:#f05f40;color:white;border-bottom:1px solid black; margin-bottom:.5em">'+(i+1)+'</div>');
-      for (var k = 0; k < plane.columns; k++) {
-        document.write('<div id='+(i+1)+'-'+(k+1)+' class="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>');
-        if (k===2) {
-          document.write("<br/>");
-        }
-      }
-      document.write('<div align="center" style="background-color:#f05f40;color:white;border-top:1px solid black; margin-top:.5em">'+(i+1)+'</div>');
-      document.write('</div>');
-    }
-  </script>
-  </div>
+    <div class="row" style="margin-top:1em">
+      <span class="col-xs-1"></span>
+      <span class="col-xs-10">
+        <div id="planeHtml" style="min-width:1200px">
 
-  <form class="form-horizontal" style="margin-top:2em" action="index.php" method="post">
-    <fieldset>
-      <input type="hidden"  value=""/>
-      <button id="seatBtn" name="sear" class="btn btn-primary" style="margin-left:4em">Select Seat</button>
-    </fieldset>
-  </form>
-
+        </div>
+      </span>
+      <span class="col-xs-1"></span>
+    </div>
   </section>
+
+<script type="text/javascript">
+var html = "";
+
+function bPlane() {
+  for (var i = 0; i < numTravellers; i++) {
+    html += '<div style="min-height:50px" ondrop="drop(event)" ondragover="allowDrop(event)">' +
+                '<img id="drag'+(i+1)+'" src="img/chair.svg" height="32px" draggable="true" ondragstart="drag(event)">'+
+            '</div>';
+  }
+
+  for (var i = 0; i < plane.rows; i++) {
+    html += '<span style="float:left">';
+    html += '<div align="center" style="background-color:#f05f40;color:white;border-bottom:1px solid black; margin-bottom:.5em">'+
+                (i+1)+
+            '</div>';
+    for (var k = 0; k < plane.columns; k++) {
+      html += '<div id='+(i+1)+'-'+(k+1)+' class="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>'
+      if (k===2) {
+        html += '<br/>';
+      }
+    }
+
+    html += '<div align="center" style="background-color:#f05f40;color:white;border-top:1px solid black; margin-top:.5em">'+
+                (i+1)+
+            '</div>';
+    html += '</span>';
+  }
+
+  return html;
+}
+
+// html += '</div>';
+
+document.getElementById("planeHtml").innerHTML = bPlane();
+
+</script>
 </body>
 </html>

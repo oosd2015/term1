@@ -11,8 +11,8 @@ Project: Travel Experts
   if(loggedIn()){
     $packageInstance = new packageInfo($_SESSION["packageId"]);
     $package = $packageInstance->packageDetails();
-    $departDate = date('F j, Y', strtotime($package->PkgStartDate));
-    $returnDate = date('F j, Y', strtotime($package->PkgEndDate));
+    $departDate = date('F j, Y', strtotime($package[0]->PkgStartDate));
+    $returnDate = date('F j, Y', strtotime($package[0]->PkgEndDate));
     $packagePrice = number_format($package[0]->PkgBasePrice, 2, '.', ',');
     $customer=$_SESSION["user"];
     $customerFullName = $customer->getCustFirstName()." ".$customer->getCustLastName();
@@ -163,7 +163,7 @@ Project: Travel Experts
                       Return: <?php echo $returnDate; ?><br>
     								</div>
     								<div class="col-xs-3 qty">
-    									<input type="text" id="packageNumber" placeholder="Enter Number of Travelers" />
+    									<input type="text" id="packageNumber" placeholder="Enter Number of Travelers"/>
     								</div>
     								<div class="col-xs-5 amount text-right">
     									<span id="packagePriceTotal">0.00</span>
@@ -174,7 +174,6 @@ Project: Travel Experts
                       Booking Fee
     								</div>
     								<div class="col-xs-3 qty">
-
     								</div>
     								<div class="col-xs-5 amount text-right">
     									<span id="packageCommissionPrice"></span>
@@ -203,11 +202,10 @@ Project: Travel Experts
                       <form method="post" id="packageForm" action="receipt.php">
                         <input type="hidden" id="grandTotalHidden" name="grandTotal" />
                         <input type="hidden" id="specialRequestsHidden" name="specialRequests" />
-                        <input type="hidden" id="numberTravelersHidden" name="numberTravelers" />
+                        <input type="hidden" id="numberTravelersHidden" name="numberTravelers"/>
                       <button type="submit" id="Bookings" class="btn btn-primary">Book</button>
-                    </form>
-                    <br>
                       <a href="packages.php"  class="btn btn-primary">Cancel</a>
+                    </form>
                     </div>
                 </div>
 
@@ -244,6 +242,7 @@ Project: Travel Experts
   Project: Travel Experts
   ********************************/
   //Only allows numbers and no .
+  $("#Bookings").prop('disabled', true);
   $("#packageNumber").keydown(function (e) {
     if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110]) !== -1 ||
      (e.keyCode == 65 && ( e.ctrlKey === true || e.metaKey === true ) ) ||
@@ -273,6 +272,11 @@ Project: Travel Experts
     $("#numberTravelersHidden").val(travelers);
     $("#grandTotalHidden").val(grandTotal);
     $("#specialRequestsHidden").val($("#specialRequests").val());
+    if ( $("#numberTravelersHidden").val() == "" ) {
+      $("#Bookings").prop('disabled', true);
+    } else {
+      $("#Bookings").prop('disabled', false);
+    }
 
     return true;
  }
