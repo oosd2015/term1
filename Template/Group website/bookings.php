@@ -11,8 +11,10 @@ Project: Travel Experts
   if(loggedIn()){
     $packageInstance = new packageInfo($_SESSION["packageId"]);
     $package = $packageInstance->packageDetails();
+    //convert string to time
     $departDate = date('F j, Y', strtotime($package[0]->PkgStartDate));
     $returnDate = date('F j, Y', strtotime($package[0]->PkgEndDate));
+
     $packagePrice = number_format($package[0]->PkgBasePrice, 2, '.', ',');
     $customer=$_SESSION["user"];
     $customerFullName = $customer->getCustFirstName()." ".$customer->getCustLastName();
