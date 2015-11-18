@@ -159,7 +159,7 @@
       return $this->CustCountry;
     }
 
-    public function stCustCountry($custCountry) {
+    public function setCustCountry($custCountry) {
       $this->CustCountry = $custCountry;
     }
 
