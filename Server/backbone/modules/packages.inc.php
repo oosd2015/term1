@@ -13,7 +13,7 @@ class packages{  //class that returns the array of packages sorted by date (eith
     $packagesArray;
     switch ($sortBy) {
         case "newest": //sort newest to oldest
-          $query = "SELECT * FROM `packages` ORDER BY `PkgStartDate` DESC" ;
+          $query = "SELECT * FROM `packages` ORDER BY `PkgStartDate` DESC";
           $packagesArray = $this->connectToDatabase($query);
         break;
         case "oldest": //sort oldest to newest
@@ -57,7 +57,20 @@ class packages{  //class that returns the array of packages sorted by date (eith
   public function htmlFormatter($allPackages){ //create an html string
     $htmlModals = "";
     $htmlThumbnails = "";
+    $htmlHidden = "";
     $counterId = 0;
+
+    $htmlHidden = '<div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title" style="text-align:center">
+          <a class="accordion-toggle" style="text-align:center !important" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+            View Our Previous Vacations
+          </a>
+        </h4>
+      </div>
+      <div id="collapseThree" class="panel-collapse collapse">
+        <div class="panel-body">';
+
     foreach ($allPackages as $package){
       /*
       $html .=  $package->PackageId;
@@ -72,107 +85,154 @@ class packages{  //class that returns the array of packages sorted by date (eith
       $counterId++;
       $modalId = 'portfolioModal'.$counterId; //this is the id for the modal, this increments it so we have a new id for each new modal
       $anchorId = 'anchor'.$counterId; //this creates the id for the anchor, and increments it so we have a new id for each new anchor
+      $packagePrice = number_format($package->PkgBasePrice, 2, '.', ',');
 
-
-      //this is the portion of the string creating the thumbnails
-      $htmlThumbnails .= '<span class="container col-md-6">
-                                <a href="#" id="'.$anchorId.'" class="packageClickBtn"  data-modal="'.$modalId.'" >
-                                <div class="row">
-                                    <div class="col-lg-12 text-center">
-                                        <h2 class="section-heading">'.$package->PkgName.'</h2>
-                                        <hr class="primary">
-                                    </div>
-                                </div>
-                                <div class="no-padding">
-                                    <div class="container-fluid">
-                                        <div class="row no-gutter">
-                                            <div class="">
-
-                                                    <img src="img/packages/'.$package->PkgImage.'" class="img-responsive" alt="">
-                                                    <div class="packages-box-caption">
-                                                        <div class="packages-box-caption-content">
-                                                            <div class="project-category text-faded">
-                                                              Click for more details!
-                                                            </div>
-                                                            <div class="project-name">
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                            </div>
+          if(($package->startDatePassed) && ($package->endDatePassed)){
+            $htmlHidden .= '
+            <span class="col-md-6">
+                                      <div class="row">
+                                          <div class="col-lg-12 text-center">
+                                              <h2 class="section-heading">'.$package->PkgName.'</h2>
+                                              <p style="font-size:80%;">Was Only $'.$packagePrice.'</p>
+                                              <hr class="primary">
                                           </div>
-                                        </div>
                                       </div>
-                                    </a>
-                                    </span>';
+                                      <div class="no-padding">
+                                          <div class="container-fluid">
+                                              <div class="row no-gutter">
+                                                  <div class="">
 
-          //this is the portion of the string that creates the modal
-          $startDateDisplay = ($package->startDatePassed == true) ?
-          '<span style="color:red;font-weight:bold; text-decoration:line-through">'.date('F j, Y', strtotime($package->PkgStartDate)).'</span>' : date('F j, Y', strtotime($package->PkgStartDate));;
+                                                          <img src="img/packages/'.$package->PkgImage.'" class="img-responsive" alt="">
+                                                          <div class="packages-box-caption">
+                                                              <div class="packages-box-caption-content">
+                                                                  <div class="project-category text-faded">
+                                                                    You Missed a Great Deal!
+                                                                  </div>
+                                                                  <div class="project-name">
 
-          $endDateDisplay = ($package->endDatePassed == true) ?
-          '<span style="color:red;font-weight:bold; text-decoration:line-through">'.date('F j, Y', strtotime($package->PkgEndDate)).'</span' : date('F j, Y', strtotime($package->PkgEndDate));
+                                                                  </div>
+                                                              </div>
+                                                          </div>
 
-          $htmlModals .= '<div class="portfolio-modal modal fade" id="'.$modalId.'" tabindex="-1" role="dialog" aria-hidden="true">
-          <div class="modal-content">
-              <div class="close-modal" data-dismiss="modal">
-                  <div class="lr">
-                      <div class="rl">
-                      </div>
-                  </div>
-              </div>
-              <div class="container">
-                  <div class="row">
-                      <div class="col-lg-8 col-lg-offset-2">
-                          <div class="modal-body">
-                              <h2>'.$package->PkgName.'</h2>
-                              <hr class="star-primary">
-                              <img src="img/packages/'.$package->PkgImage.'" class="img-responsive img-centered" alt="">
-                              <p>'.$package->PkgDesc.'</p>
-                              <ul class="list-inline item-details">
-                                  <li>Start Date:
-                                      <strong>'.$startDateDisplay.'
-                                      </strong>
-                                  </li>
-                                  <li>End Date:
-                                      <strong>'.$endDateDisplay.'
-                                      </strong>
-                                  </li>
-                                  <li>Price:
-                                      <strong>$'.number_format($package->PkgBasePrice, 2, '.', ',').'
-                                      </strong>
-                                  </li>
-                              </ul>
-                              <form method="post" action="orderNow.php">
-                              <input type="hidden" name="packageId" value="'.$package->PackageId.'">
-                              <button type="submit" class="btn btn-info"><i class="fa fa-cart-plus"></i> Order Now!</button>
-                              </form>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>';
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </span>
+                          ';
+          }else{
+                  //this is the portion of the string creating the thumbnails
+            $htmlThumbnails .= '<span class="container col-md-6">
+                                      <a href="#" id="'.$anchorId.'" class="packageClickBtn"  data-modal="'.$modalId.'" >
+                                      <div class="row">
+                                          <div class="col-lg-12 text-center">
+                                              <h2 class="section-heading">'.$package->PkgName.'</h2>
+                                              <hr class="primary">
+                                          </div>
+                                      </div>
+                                      <div class="no-padding">
+                                          <div class="container-fluid">
+                                              <div class="row no-gutter">
+                                                  <div class="">
+
+                                                          <img src="img/packages/'.$package->PkgImage.'" class="img-responsive" alt="">
+                                                          <div class="packages-box-caption">
+                                                              <div class="packages-box-caption-content">
+                                                                  <div class="project-category text-faded">
+                                                                    Click for more details!
+                                                                  </div>
+                                                                  <div class="project-name">
+
+                                                                  </div>
+                                                              </div>
+                                                          </div>
+
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </a>
+                                          </span>';
+                //this is the portion of the string that creates the modal
+            $startDateDisplay = ($package->startDatePassed == true) ?
+            '<span style="color:red;font-weight:bold; text-decoration:line-through">'.date('F j, Y', strtotime($package->PkgStartDate)).'</span>' : date('F j, Y', strtotime($package->PkgStartDate));;
+
+            $endDateDisplay = ($package->endDatePassed == true) ?
+            '<span style="color:red;font-weight:bold; text-decoration:line-through">'.date('F j, Y', strtotime($package->PkgEndDate)).'</span' : date('F j, Y', strtotime($package->PkgEndDate));
+
+            $htmlModals .= '<div class="portfolio-modal modal fade" id="'.$modalId.'" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl">
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2">
+                            <div class="modal-body">
+                                <h2>'.$package->PkgName.'</h2>
+                                <hr class="star-primary">
+                                <img src="img/packages/'.$package->PkgImage.'" class="img-responsive img-centered" alt="">
+                                <p>'.$package->PkgDesc.'</p>
+                                <ul class="list-inline item-details">
+                                    <li>Start Date:
+                                        <strong>'.$startDateDisplay.'
+                                        </strong>
+                                    </li>
+                                    <li>End Date:
+                                        <strong>'.$endDateDisplay.'
+                                        </strong>
+                                    </li>
+                                    <li>Price:
+                                        <strong>$'.$packagePrice.'
+                                        </strong>
+                                    </li>
+                                </ul>
+                                <form method="post" action="orderNow.php">
+                                <input type="hidden" name="packageId" value="'.$package->PackageId.'">
+                                <button type="submit" class="btn btn-info"><i class="fa fa-cart-plus"></i> Order Now!</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>';
+          }
 
 
     }
     //$htmlModals
     //$htmlThumbnails
-
+    $htmlHidden .= "</div>  </div>  </div>";
 
 //whenever we click on an anchor with class="packageClickBtn", it will open a modal.
     $htmlScript = '<script type="text/javascript">
     $(".packageClickBtn").click(function(event){
 event.preventDefault();
 $("#"+$(this).attr("data-modal")).modal("show");
-});
-          </script>';
+});</script>';
 
-   return array("modals"=>$htmlModals, "thumbnails"=>$htmlThumbnails, "script"=>$htmlScript);
+   return array("modals"=>$htmlModals, "thumbnails"=>$htmlThumbnails, "script"=>$htmlScript, "hidden"=>$htmlHidden);
   }
 
 }
+class packageInfo extends packages{
+  public $packageId;
+
+  function __construct($packageId){
+    $this->packageId = ($packageId);
+  }
+  function packageDetails(){
+    $query = "SELECT * FROM `packages` WHERE `PackageId`='".$this->packageId."'";
+    $package = $this->connectToDatabase($query);
+    return $package;
+  }
+}
+
+
 
 /*
 $packageInstance = new packages();

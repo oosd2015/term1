@@ -119,7 +119,10 @@ $htmlOutput = $packageInstance->htmlFormatter($allPackages);
       <div class="row"> <!-- php packages here -->
           <?php echo $htmlOutput['thumbnails']; ?>
       </div> <!-- php packages end here -->
-                    </section>
+      <div class="row">
+        <?php echo $htmlOutput['hidden']; ?>
+        </div>
+   </section>
 
     <footer>
         <div class="container">

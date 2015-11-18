@@ -1,12 +1,30 @@
 <?php
-  include ("../../Server/backbone/modules/login.inc.php");
+  include ("../../Server/backbone/modules/packages.inc.php");
+  include ("../../Server/backbone/modules/customers.inc.php");
   include ("../../Server/backbone/global.php");
+//  echo($_SESSION["packageId"]);
+$packageInstance = new packageInfo($_SESSION["packageId"]);
+$package = $packageInstance->packageDetails();
+//print_r ($package);
 
-  if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $login = new LoginHandle ($_REQUEST);
-    $login->processLogin();
-  }
+$packageStartDate;
+$packageEndDate;
+$packagePrice = number_format($package[0]->PkgBasePrice, 2, '.', ',');
+$customer=$_SESSION["user"];
+$customerFullName = $customer->getCustFirstName()." ".$customer->getCustLastName();
 
+$packageCommission = round($package[0]->PkgAgencyCommission);
+$_SESSION["confirmationNumber"] = randomString();
+$confirmationNumber = $_SESSION["confirmationNumber"];
+//print_r ($customer->getCustFirstName());
+function randomString($length = 5) {
+    $characters = '01234HIJKLMNOPQR56789abcdefstuvwxyzABCDEFGSTUghijklmnopqrVWXYZ';
+    $charactersLength = strlen($characters);$randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -111,55 +129,25 @@
     			<div class="col-md-12">
     				<div class="invoice-wrapper">
     					<div class="intro">
-    						Hello <strong>CUSTOMER NAME</strong>,
+    						Hello <strong><?php echo $customerFullName; ?></strong>,
     						<br>
-    						This is the overview for your Travel Experts Package receipt <strong>$AMOUNT.00</strong> (CA)
+    						This is the overview for your Travel Experts Package <strong><?php echo "$".$packagePrice ?></strong> (CA)
     					</div>
 
-    					<div class="payment-info">
-    						<div class="row">
-    							<div class="col-sm-6">
-    								<span>Receipt Overview</span>
-    								<strong># RECEIPT OVERVIEW</strong>
-    							</div>
-    							<div class="col-sm-6 text-right">
-    								<span>Payment Date</span>
-    								<strong>DATE</strong>
-    							</div>
-    						</div>
-    					</div>
 
     					<div class="payment-details">
     						<div class="row">
     							<div class="col-sm-6">
     								<span>Customer</span>
     								<strong>
-    									CUSTOMER NAME
+    									<?php echo $customerFullName; ?>
     								</strong>
-    								<p>
-    									STREET ADDRESS <br>
-    									CITY <br>
-    									POSTAL CODE <br>
-    									COUNTRY <br>
-    									<a href="#">
-    										CUSTOMER EMAIL
-    									</a>
-    								</p>
     							</div>
     							<div class="col-sm-6 text-right">
     								<span>Payment To</span>
     								<strong>
     									Travel Experts
     								</strong>
-    								<p>
-    									AGENCY STREET ADDRESS <br>
-    									AGENCY CITY <br>
-    									AGENCY POSTAL CODE <br>
-    									AGENCY COUNTRY <br>
-    									<a href="#">
-    										AGENT EMAIL
-    									</a>
-    								</p>
     							</div>
     						</div>
     					</div>
@@ -167,70 +155,62 @@
     					<div class="line-items">
     						<div class="headers clearfix">
     							<div class="row">
-    								<div class="col-xs-4">Description</div>
-    								<div class="col-xs-3">Quantity</div>
+    								<div class="col-xs-4">Overview</div>
+    								<div class="col-xs-3"> </div>
     								<div class="col-xs-5 text-right">Amount</div>
     							</div>
     						</div>
     						<div class="items">
     							<div class="row item">
     								<div class="col-xs-4 desc">
-    									PACKAGE NAME
+    									<?php echo $package[0]->PkgName; ?>
     								</div>
     								<div class="col-xs-3 qty">
-    									NUMBER OF PACKAGES PURCHASED
+    									<input type="text" id="packageNumber" placeholder="Enter Number of Travelers" />
     								</div>
     								<div class="col-xs-5 amount text-right">
-    									PACKAGE PRICE
+    									<span id="packagePriceTotal">0.00</span>
     								</div>
     							</div>
     							<div class="row item">
     								<div class="col-xs-4 desc">
-    									PACKAGE NAME
+                      Booking Fee
     								</div>
     								<div class="col-xs-3 qty">
-                      NUMBER OF PACKAGES PURCHASED
+
     								</div>
     								<div class="col-xs-5 amount text-right">
-    									PACKAGE PRICE
-    								</div>
-    							</div>
-    							<div class="row item">
-    								<div class="col-xs-4 desc">
-    									PACKAGE NAME
-    								</div>
-    								<div class="col-xs-3 qty">
-    									NUMBER OF PACKAGES PURCHASED
-    								</div>
-    								<div class="col-xs-5 amount text-right">
-    									PACKAGE PRICE
+    									<span id="packageCommissionPrice"></span>
     								</div>
     							</div>
     						</div>
     						<div class="total text-right">
     							<p class="extra-notes">
     								<strong>Special Instructions</strong>
-    								CUSTOMER ENTERS HIS SPECIAL INSTRUCTIONS HERE.
+    							<textarea name="name" id="specialRequests" rows="4" cols="40" placeholder="Enter any additional information."></textarea>
     							</p>
     							<div class="field">
-    								Subtotal <span>SUBTOTAL PRICE</span>
+    								Subtotal <span id="subtotal" >$0.00</span>
     							</div>
     							<div class="field">
-    								GST <span>TAX AMOUNT</span>
-    							</div>
-    							<div class="field">
-    								Discount <span>PERCENT%</span>
+    								GST <span id="tax">$0.00</span>
     							</div>
     							<div class="field grand-total">
-    								Total <span>GRAND TOTAL</span>
+    								Total <span id="grandTotal" style="color:green !important;" >$0.00</span>
     							</div>
     						</div>
                 <!--Booking/cancellings Buttons-->
                 <div class="form-group">
                   <label class="col-md-4 control-label" for="Bookings"></label>
                     <div class="col-lg-12 text-center">
-                      <button id="Bookings" name="Bookings" class="btn btn-primary">Book</button>
-                      <button id="Cancelling" name="Cancelling" class="btn btn-primary">Cancel</button>
+                      <form method="post" id="packageForm">
+                        <input type="hidden" id="grandTotalHidden" name="grandTotal" />
+                        <input type="hidden" id="specialRequestsHidden" name="specialRequests" />
+
+                      <button type="submit" id="Bookings" class="btn btn-primary">Book</button>
+                    </form>
+                    <br>
+                      <a href="packages.php"  class="btn btn-primary">Cancel</a>
                     </div>
                 </div>
 
@@ -260,6 +240,43 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="js/creative.js"></script>
+    <script type="text/javascript">
+    $("#packageNumber").keydown(function (e) {
+     if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110]) !== -1 || (e.keyCode == 65 && ( e.ctrlKey === true || e.metaKey === true ) ) ||
+        (e.keyCode >= 35 && e.keyCode <= 40)) {
+              return;
+     }
+     if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+         e.preventDefault();
+     }
+ });
+ $("#packageNumber").keyup(function (e) {
+   setPackageTotal($(this).val());
+ });
+
+ function setPackageTotal(travelers){
+   var agencyCommission = <?php echo $packageCommission; ?>;
+   var packagePrice = travelers * <?php echo $package[0]->PkgBasePrice; ?>;
+   var subtotal = packagePrice + agencyCommission;
+   var grandTotal = numberWithCommas(subtotal * (1.05));
+   $("#packagePriceTotal").text("$"+numberWithCommas(packagePrice));
+   $("#packageCommissionPrice").text("$"+numberWithCommas(agencyCommission));
+   $("#subtotal").text("$"+numberWithCommas(subtotal));
+   $("#tax").text("$"+numberWithCommas(subtotal * (0.05)));
+  $("#grandTotal").text("$"+grandTotal);
+
+  $("#grandTotalHidden").val(grandTotal);
+  $("#specialRequestsHidden").val($("#specialRequests").val());
+
+
+ }
+ //Adds commas to numbers
+ function numberWithCommas(x) {
+   x = x.toFixed(2);
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+    </script>
 
   </body>
 </html>
