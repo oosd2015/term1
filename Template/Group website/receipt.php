@@ -94,11 +94,11 @@
         </div>
     </nav>
 
-    <section id="bookings">
+    <section id="Receipt">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Bookings</h2>
+                    <h2 class="section-heading">Receipt</h2>
                     <hr class="primary">
                 </div>
             </div>
@@ -113,14 +113,14 @@
     					<div class="intro">
     						Hello <strong>CUSTOMER NAME</strong>,
     						<br>
-    						This is the overview for your Travel Experts Package receipt <strong>$AMOUNT.00</strong> (CA)
+    						This is the receipt for your Travel Experts Package <strong>$AMOUNT.00</strong> (CA)
     					</div>
 
     					<div class="payment-info">
     						<div class="row">
     							<div class="col-sm-6">
-    								<span>Receipt Overview</span>
-    								<strong># RECEIPT OVERVIEW</strong>
+    								<span>Receipt</span>
+    								<strong># RECEIPT</strong>
     							</div>
     							<div class="col-sm-6 text-right">
     								<span>Payment Date</span>
@@ -225,19 +225,16 @@
     								Total <span>GRAND TOTAL</span>
     							</div>
     						</div>
-                <!--Booking/cancellings Buttons-->
-                <div class="form-group">
-                  <label class="col-md-4 control-label" for="Bookings"></label>
-                    <div class="col-lg-12 text-center">
-                      <button id="Bookings" name="Bookings" class="btn btn-primary">Book</button>
-                      <button id="Cancelling" name="Cancelling" class="btn btn-primary">Cancel</button>
-                    </div>
+
+                <div class="thanks">
+                  <p><strong>Thank you</strong>
+                  </p>
                 </div>
 
     						<div class="print">
     							<a href="#">
     								<i class="fa fa-print"></i>
-    								Print this overview
+    								Print this receipt
     							</a>
     						</div>
     					</div>
