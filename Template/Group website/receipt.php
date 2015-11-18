@@ -236,6 +236,11 @@ header("Location: login.php");
     <script src="js/creative.js"></script>
 
     <script type="text/javascript">
+    /********************************
+    Author: Dylan Harty
+    Date: 11/18/2015
+    Project: Travel Experts
+    ********************************/
     d = new Date();
     $("#currentDate").text(d.toLocaleString());
     </script>

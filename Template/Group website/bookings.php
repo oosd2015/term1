@@ -1,20 +1,25 @@
 <?php
+/********************************
+Author: Dylan Harty, Heidi Cantalejo (pairProgramming)
+Date: 11/18/2015
+Project: Travel Experts
+********************************/
   include ("../../Server/backbone/modules/packages.inc.php");
   include ("../../Server/backbone/modules/customers.inc.php");
   include ("../../Server/backbone/global.php");
-//  echo($_SESSION["packageId"]);
-if(loggedIn()){
-$packageInstance = new packageInfo($_SESSION["packageId"]);
-$package = $packageInstance->packageDetails();
-$departDate = date('F j, Y', strtotime($package->PkgStartDate));
-$returnDate = date('F j, Y', strtotime($package->PkgEndDate));
-$packagePrice = number_format($package[0]->PkgBasePrice, 2, '.', ',');
-$customer=$_SESSION["user"];
-$customerFullName = $customer->getCustFirstName()." ".$customer->getCustLastName();
-$packageCommission = round($package[0]->PkgAgencyCommission);
-}else{
-header("Location: login.php");
-}
+
+  if(loggedIn()){
+    $packageInstance = new packageInfo($_SESSION["packageId"]);
+    $package = $packageInstance->packageDetails();
+    $departDate = date('F j, Y', strtotime($package->PkgStartDate));
+    $returnDate = date('F j, Y', strtotime($package->PkgEndDate));
+    $packagePrice = number_format($package[0]->PkgBasePrice, 2, '.', ',');
+    $customer=$_SESSION["user"];
+    $customerFullName = $customer->getCustFirstName()." ".$customer->getCustLastName();
+    $packageCommission = round($package[0]->PkgAgencyCommission);
+  }else{
+    header("Location: login.php");
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -233,40 +238,50 @@ header("Location: login.php");
     <!-- Custom Theme JavaScript -->
     <script src="js/creative.js"></script>
     <script type="text/javascript">
-    $("#packageNumber").keydown(function (e) {
-     if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110]) !== -1 || (e.keyCode == 65 && ( e.ctrlKey === true || e.metaKey === true ) ) ||
-        (e.keyCode >= 35 && e.keyCode <= 40)) {
-              return;
-     }
-     if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
-         e.preventDefault();
-     }
+    /********************************
+    Author: Dylan Harty
+    Date: 11/18/2015
+    Project: Travel Experts
+    ********************************/
+    //Only allows numbers and no .
+  $("#packageNumber").keydown(function (e) {
+    if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110]) !== -1 ||
+     (e.keyCode == 65 && ( e.ctrlKey === true || e.metaKey === true ) ) ||
+     (e.keyCode >= 35 && e.keyCode <= 40)) {
+          return;
+    }
+    if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+      e.preventDefault();
+    }
  });
  $("#packageNumber").keyup(function (e) {
    setPackageTotal($(this).val());
  });
 
+ //keeps the totals updated
  function setPackageTotal(travelers){
    var agencyCommission = <?php echo $packageCommission; ?>;
    var packagePrice = travelers * <?php echo $package[0]->PkgBasePrice; ?>;
    var subtotal = packagePrice + agencyCommission;
    var grandTotal = numberWithCommas(subtotal * (1.05));
-   $("#packagePriceTotal").text("$"+numberWithCommas(packagePrice));
-   $("#packageCommissionPrice").text("$"+numberWithCommas(agencyCommission));
-   $("#subtotal").text("$"+numberWithCommas(subtotal));
-   $("#tax").text("$"+numberWithCommas(subtotal * (0.05)));
-  $("#grandTotal").text("$"+grandTotal);
+    $("#packagePriceTotal").text("$"+numberWithCommas(packagePrice));
+    $("#packageCommissionPrice").text("$"+numberWithCommas(agencyCommission));
+    $("#subtotal").text("$"+numberWithCommas(subtotal));
+    $("#tax").text("$"+numberWithCommas(subtotal * (0.05)));
+    $("#grandTotal").text("$"+grandTotal);
 
-  $("#numberTravelersHidden").val(travelers);
-  $("#grandTotalHidden").val(grandTotal);
-  $("#specialRequestsHidden").val($("#specialRequests").val());
+    $("#numberTravelersHidden").val(travelers);
+    $("#grandTotalHidden").val(grandTotal);
+    $("#specialRequestsHidden").val($("#specialRequests").val());
 
-
+    return true;
  }
+
  //Adds commas to numbers
- function numberWithCommas(x) {
-   x = x.toFixed(2);
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+ function numberWithCommas(v) {
+   v = v.toFixed(2);
+   v = v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return v;
 }
 
     </script>
