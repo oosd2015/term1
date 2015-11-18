@@ -1,4 +1,6 @@
-<!---***************************************************************************
+
+<?php
+/***************************************************************************
 Title:       PHP Message Class
 Author:      Royal Bissell
 Date:        2015-11-11
@@ -9,8 +11,8 @@ Description: Messaging Class to perform error messaging and Success
              *This file contains the subclasses: ErrorMsg & SuccessMsg.
              Messages upon success, should be treated differently than
              errors.
-*****************************************************************************-->
-<?php
+*****************************************************************************/
+
     class Message
     {
         protected $myUserMsg;
