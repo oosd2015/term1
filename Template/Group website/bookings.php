@@ -238,12 +238,12 @@ Project: Travel Experts
     <!-- Custom Theme JavaScript -->
     <script src="js/creative.js"></script>
     <script type="text/javascript">
-    /********************************
-    Author: Dylan Harty
-    Date: 11/18/2015
-    Project: Travel Experts
-    ********************************/
-    //Only allows numbers and no .
+  /********************************
+  Author: Dylan Harty
+  Date: 11/18/2015
+  Project: Travel Experts
+  ********************************/
+  //Only allows numbers and no .
   $("#packageNumber").keydown(function (e) {
     if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110]) !== -1 ||
      (e.keyCode == 65 && ( e.ctrlKey === true || e.metaKey === true ) ) ||
