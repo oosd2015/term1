@@ -3,27 +3,17 @@
   include ("../../Server/backbone/modules/customers.inc.php");
   include ("../../Server/backbone/global.php");
 //  echo($_SESSION["packageId"]);
+if(loggedIn()){
 $packageInstance = new packageInfo($_SESSION["packageId"]);
 $package = $packageInstance->packageDetails();
-//print_r ($package);
-
-$packageStartDate;
-$packageEndDate;
+$departDate = date('F j, Y', strtotime($package->PkgStartDate));
+$returnDate = date('F j, Y', strtotime($package->PkgEndDate));
 $packagePrice = number_format($package[0]->PkgBasePrice, 2, '.', ',');
 $customer=$_SESSION["user"];
 $customerFullName = $customer->getCustFirstName()." ".$customer->getCustLastName();
-
 $packageCommission = round($package[0]->PkgAgencyCommission);
-$_SESSION["confirmationNumber"] = randomString();
-$confirmationNumber = $_SESSION["confirmationNumber"];
-//print_r ($customer->getCustFirstName());
-function randomString($length = 5) {
-    $characters = '01234HIJKLMNOPQR56789abcdefstuvwxyzABCDEFGSTUghijklmnopqrVWXYZ';
-    $charactersLength = strlen($characters);$randomString = '';
-    for ($i = 0; $i < $length; $i++) {
-        $randomString .= $characters[rand(0, $charactersLength - 1)];
-    }
-    return $randomString;
+}else{
+header("Location: login.php");
 }
 ?>
 <!DOCTYPE html>
@@ -163,7 +153,9 @@ function randomString($length = 5) {
     						<div class="items">
     							<div class="row item">
     								<div class="col-xs-4 desc">
-    									<?php echo $package[0]->PkgName; ?>
+                      <?php echo $package[0]->PkgName; ?><br>
+                      Depart: <?php echo $departDate; ?><br>
+                      Return: <?php echo $returnDate; ?><br>
     								</div>
     								<div class="col-xs-3 qty">
     									<input type="text" id="packageNumber" placeholder="Enter Number of Travelers" />
@@ -203,10 +195,10 @@ function randomString($length = 5) {
                 <div class="form-group">
                   <label class="col-md-4 control-label" for="Bookings"></label>
                     <div class="col-lg-12 text-center">
-                      <form method="post" id="packageForm">
+                      <form method="post" id="packageForm" action="receipt.php">
                         <input type="hidden" id="grandTotalHidden" name="grandTotal" />
                         <input type="hidden" id="specialRequestsHidden" name="specialRequests" />
-
+                        <input type="hidden" id="numberTravelersHidden" name="numberTravelers" />
                       <button type="submit" id="Bookings" class="btn btn-primary">Book</button>
                     </form>
                     <br>
@@ -265,6 +257,7 @@ function randomString($length = 5) {
    $("#tax").text("$"+numberWithCommas(subtotal * (0.05)));
   $("#grandTotal").text("$"+grandTotal);
 
+  $("#numberTravelersHidden").val(travelers);
   $("#grandTotalHidden").val(grandTotal);
   $("#specialRequestsHidden").val($("#specialRequests").val());
 

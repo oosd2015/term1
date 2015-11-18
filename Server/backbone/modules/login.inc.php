@@ -79,12 +79,4 @@ Class to handle user login and the login page
 
     //Function to check if a user is logged in; maybe move to global.php
   }
-
-  function loggedIn() {
-    if ( isset($_SESSION["user"]) && !empty($_SESSION["user"]) ) {
-      return true;
-    } else {
-      return false;
-    }
-  }
  ?>

@@ -1,12 +1,38 @@
 <?php
-  include ("../../Server/backbone/modules/login.inc.php");
+  include ("../../Server/backbone/modules/packages.inc.php");
+  include ("../../Server/backbone/modules/customers.inc.php");
   include ("../../Server/backbone/global.php");
 
-  if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $login = new LoginHandle ($_REQUEST);
-    $login->processLogin();
-  }
+if(loggedIn()){
+  $packageInstance = new packageInfo($_SESSION["packageId"]);
+  $package = $packageInstance->packageDetails();
 
+  $customer=$_SESSION["user"];
+  $customerFullName = $customer->getCustFirstName()." ".$customer->getCustLastName();
+
+  $grandTotal = "";
+  $specialRequests = "";
+  $numberTravelers = "";
+  $departDate = date('F j, Y', strtotime($package->PkgStartDate));
+  $returnDate = date('F j, Y', strtotime($package->PkgEndDate));
+  $confirmationNumber = randomString();
+  if($_POST){
+    $grandTotal = $_POST['grandTotal'];
+    $specialRequests = $_POST['specialRequests'];
+    $numberTravelers = $_POST['numberTravelers'];
+
+/*
+    $db = new DB('travelexperts');
+    $query = "INSERT INTO `orders` (`confirmation`,`customerId`,`packageId`, `date`)
+    VALUES ( '".."', '".."', '".."', '".."')";
+    $customers = $db->set($query);
+    */
+  }else{
+    header("Location: packages.php");
+  }
+}else{
+header("Location: login.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -111,20 +137,20 @@
     			<div class="col-md-12">
     				<div class="invoice-wrapper">
     					<div class="intro">
-    						Hello <strong>CUSTOMER NAME</strong>,
+    						<strong><?php echo $customerFullName; ?></strong>,
     						<br>
-    						This is the receipt for your Travel Experts Package <strong>$AMOUNT.00</strong> (CA)
+    						This is the receipt for your Travel Experts Package.
     					</div>
 
     					<div class="payment-info">
     						<div class="row">
     							<div class="col-sm-6">
     								<span>Receipt</span>
-    								<strong># RECEIPT</strong>
+    								<strong>#<?php echo $confirmationNumber; ?></strong>
     							</div>
     							<div class="col-sm-6 text-right">
     								<span>Payment Date</span>
-    								<strong>DATE</strong>
+    								<strong><span id="currentDate"></span></strong>
     							</div>
     						</div>
     					</div>
@@ -134,32 +160,14 @@
     							<div class="col-sm-6">
     								<span>Customer</span>
     								<strong>
-    									CUSTOMER NAME
+    									<?php echo $customerFullName; ?>
     								</strong>
-    								<p>
-    									STREET ADDRESS <br>
-    									CITY <br>
-    									POSTAL CODE <br>
-    									COUNTRY <br>
-    									<a href="#">
-    										CUSTOMER EMAIL
-    									</a>
-    								</p>
     							</div>
     							<div class="col-sm-6 text-right">
     								<span>Payment To</span>
     								<strong>
     									Travel Experts
     								</strong>
-    								<p>
-    									AGENCY STREET ADDRESS <br>
-    									AGENCY CITY <br>
-    									AGENCY POSTAL CODE <br>
-    									AGENCY COUNTRY <br>
-    									<a href="#">
-    										AGENT EMAIL
-    									</a>
-    								</p>
     							</div>
     						</div>
     					</div>
@@ -167,67 +175,36 @@
     					<div class="line-items">
     						<div class="headers clearfix">
     							<div class="row">
-    								<div class="col-xs-4">Description</div>
-    								<div class="col-xs-3">Quantity</div>
-    								<div class="col-xs-5 text-right">Amount</div>
+    								<div class="col-xs-4">Package</div>
+    								<div class="col-xs-3"></div>
+    								<div class="col-xs-5 text-right">Payment of</div>
     							</div>
     						</div>
     						<div class="items">
     							<div class="row item">
     								<div class="col-xs-4 desc">
-    									PACKAGE NAME
+    									<?php echo $package[0]->PkgName; ?><br>
+                      Depart: <?php echo $departDate; ?><br>
+                      Return: <?php echo $returnDate; ?><br>
     								</div>
     								<div class="col-xs-3 qty">
-    									NUMBER OF PACKAGES PURCHASED
+    									<?php echo $numberTravelers; ?>
     								</div>
     								<div class="col-xs-5 amount text-right">
-    									PACKAGE PRICE
-    								</div>
-    							</div>
-    							<div class="row item">
-    								<div class="col-xs-4 desc">
-    									PACKAGE NAME
-    								</div>
-    								<div class="col-xs-3 qty">
-                      NUMBER OF PACKAGES PURCHASED
-    								</div>
-    								<div class="col-xs-5 amount text-right">
-    									PACKAGE PRICE
-    								</div>
-    							</div>
-    							<div class="row item">
-    								<div class="col-xs-4 desc">
-    									PACKAGE NAME
-    								</div>
-    								<div class="col-xs-3 qty">
-    									NUMBER OF PACKAGES PURCHASED
-    								</div>
-    								<div class="col-xs-5 amount text-right">
-    									PACKAGE PRICE
+    									<?php echo $grandTotal; ?>
     								</div>
     							</div>
     						</div>
     						<div class="total text-right">
     							<p class="extra-notes">
     								<strong>Special Instructions</strong>
-    								CUSTOMER ENTERS HIS SPECIAL INSTRUCTIONS HERE.
+    							<?php echo $specialRequests; ?>
     							</p>
-    							<div class="field">
-    								Subtotal <span>SUBTOTAL PRICE</span>
-    							</div>
-    							<div class="field">
-    								GST <span>TAX AMOUNT</span>
-    							</div>
-    							<div class="field">
-    								Discount <span>PERCENT%</span>
-    							</div>
-    							<div class="field grand-total">
-    								Total <span>GRAND TOTAL</span>
-    							</div>
+                  <br>
     						</div>
 
                 <div class="thanks">
-                  <p><strong>Thank you</strong>
+                  <p><strong>Thank you!</strong>
                   </p>
                 </div>
 
@@ -257,6 +234,11 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="js/creative.js"></script>
+
+    <script type="text/javascript">
+    d = new Date();
+    $("#currentDate").text(d.toLocaleString());
+    </script>
 
   </body>
 </html>

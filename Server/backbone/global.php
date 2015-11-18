@@ -124,6 +124,23 @@ include("modules/messages.inc.php");
     }
   }
 
+  function loggedIn() {
+    if ( isset($_SESSION["user"]) && !empty($_SESSION["user"]) ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+ //Get a random string using the $string
+  function randomString($length = 5) {
+      $string = '01234HIJKLMNOPQR56789ABCDEFGSTUVWXYZ';
+      $charactersLength = strlen($string);$randomString = '';
+      for ($i = 0; $i < $length; $i++) {
+          $randomString .= $string[rand(0, $charactersLength - 1)];
+      }
+      return $randomString;
+  }
+
 /*
   $db = new DB('travelexperts');
 
