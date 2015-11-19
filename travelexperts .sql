@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 14, 2015 at 12:10 AM
+-- Generation Time: Nov 19, 2015 at 08:36 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -310,7 +310,7 @@ CREATE TABLE IF NOT EXISTS `bookings` (
   KEY `PackageId` (`PackageId`),
   KEY `PackagesBookings` (`PackageId`),
   KEY `TripTypesBookings` (`TripTypeId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1304 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1336 ;
 
 --
 -- Dumping data for table `bookings`
@@ -451,7 +451,39 @@ INSERT INTO `bookings` (`BookingId`, `BookingDate`, `BookingNo`, `TravelerCount`
 (1293, '2000-10-22 00:00:00', 'KJLK89234', 1, 130, 'L', NULL),
 (1301, '2000-11-21 00:00:00', 'FSD82940', 1, 127, 'B', NULL),
 (1302, '2000-11-22 00:00:00', 'FSD82941', 1, 141, 'B', NULL),
-(1303, '2000-11-23 00:00:00', 'KJk934', 1, 127, 'B', NULL);
+(1303, '2000-11-23 00:00:00', 'KJk934', 1, 127, 'B', NULL),
+(1304, NULL, 'PBUGI', 1, 104, 'L', 1),
+(1305, NULL, 'OX4SE', 1, 104, 'L', 1),
+(1306, NULL, 'S1USD', 1, 104, 'L', 1),
+(1307, NULL, 'YTN9C', 1, 104, 'L', 1),
+(1308, NULL, 'D11LW', 1, 104, 'L', 1),
+(1309, NULL, 'E3XAN', 1, 104, 'L', 1),
+(1310, NULL, 'F1W0G', 1, 104, 'L', 1),
+(1311, NULL, 'L9W8B', 1, 104, 'L', 1),
+(1312, NULL, '80714', 1, 104, 'L', 1),
+(1313, NULL, 'ZCRC0', 1, 104, 'L', 1),
+(1314, NULL, 'XCCUL', 1, 104, 'L', 1),
+(1315, NULL, 'OHJSR', 1, 104, 'L', 1),
+(1316, NULL, '87ZE5', 1, 104, 'L', 1),
+(1317, NULL, 'E9I2W', 1, 104, 'L', 1),
+(1318, NULL, 'ME8OI', 1, 104, 'L', 1),
+(1319, NULL, 'K2YN2', 1, 104, 'L', 1),
+(1320, NULL, 'J9BAU', 1, 104, 'L', 1),
+(1321, NULL, 'ZBW3M', 1, 104, 'L', 1),
+(1322, NULL, 'MXCGA', 1, 104, 'L', 1),
+(1323, NULL, 'KAXB1', 1, 104, 'L', 1),
+(1324, NULL, 'A10Y2', 1, 104, 'L', 1),
+(1325, NULL, 'YCBR2', 1, 104, 'L', 1),
+(1326, NULL, 'Y42UU', 1, 104, 'L', 1),
+(1327, NULL, 'T8Q72', 1, 104, 'L', 1),
+(1328, NULL, '00LKT', 1, 104, 'L', 1),
+(1329, NULL, '6OQ96', 1, 104, 'L', 1),
+(1330, NULL, 'GUG6D', 1, 104, 'L', 1),
+(1331, NULL, 'WLPS0', 1, 104, 'L', 1),
+(1332, NULL, 'M64QJ', 1, 104, 'L', 1),
+(1333, NULL, 'IBPCO', 1, 104, 'L', 1),
+(1334, NULL, 'XI02A', 1, 104, 'L', 1),
+(1335, NULL, '3MLQN', 1, 104, 'L', 1);
 
 -- --------------------------------------------------------
 
@@ -548,7 +580,7 @@ CREATE TABLE IF NOT EXISTS `customers` (
   `CustPassword` varchar(150) NOT NULL,
   PRIMARY KEY (`CustomerId`),
   KEY `EmployeesCustomers` (`AgentId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=144 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=146 ;
 
 --
 -- Dumping data for table `customers`
@@ -579,7 +611,9 @@ INSERT INTO `customers` (`CustomerId`, `CustFirstName`, `CustLastName`, `CustAdd
 (140, 'Derrick', 'Baltazar', '9111 Church Ave. #3N, NE', 'Calgary', 'AB', 'T3E 5C9', 'Canada', '4032255231', '4037502547', 'dba@gmail.com                                   ', 6, 'c8837b23ff8aaa8a2dde915473ce0991'),
 (141, 'Robert', 'Boyd', '96-04 57th Ave #12A, NE', 'Calgary', 'AB', 'T3E 5C5', 'Canada', '4032255647', '4037509512', 'rbo@gmail.com', 3, 'c8837b23ff8aaa8a2dde915473ce0991'),
 (142, 'Monica', 'Waldman', '257 Depot Rd., NE', 'Calgary', 'AB', 'T2J 6P3', 'Canada', '4032255629', '4032844566', 'mwaldman@aol.com                                  ', 2, 'c8837b23ff8aaa8a2dde915473ce0991'),
-(143, 'Gerard', 'Biers', '205 19th St., NE', 'Calgary', 'AB', 'T2J 6B6', 'Canada', '4032251952', '4037506578', 'gb@gmail.com', 8, 'c8837b23ff8aaa8a2dde915473ce0991');
+(143, 'Gerard', 'Biers', '205 19th St., NE', 'Calgary', 'AB', 'T2J 6B6', 'Canada', '4032251952', '4037506578', 'gb@gmail.com', 8, 'c8837b23ff8aaa8a2dde915473ce0991'),
+(144, 'Test', 'One', '123s', 'Calgary', 'AB', 'P0S4AL', 'Canad', '1234567', '1234566', 'Royal@Email.com', NULL, '5f4dcc3b5aa765d61d8327deb882cf99'),
+(145, 'dsa', 'dasd', 'da', 'da', 'da', 'da', NULL, NULL, 'dad', 'das@gmail.com', NULL, '2a6571da26602a67be14ea8c5ab82349');
 
 -- --------------------------------------------------------
 
