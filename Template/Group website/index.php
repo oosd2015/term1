@@ -5,6 +5,9 @@ Date:        2015-11-18 
 Description: HTML Index page.
              Uses Bootstrap Template, CSS, and JavaScript.
 <!-----------------------------------------------------------------------------
+<?php
+unset($_SESSION['packageId']);
+?>
 
 <!-----------------------------------------------------------------------------
 License:     Apache 2.0 by Start Bootstrap.

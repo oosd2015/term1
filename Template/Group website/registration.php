@@ -10,6 +10,8 @@ Description: HTML Contact page with agency and agents contact info.
   include ("../../Server/backbone/modules/registration.inc.php");
   include ("../../Server/backbone/global.php");
 
+  unset($_SESSION['packageId']);
+
   if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $registration = new RegistrationHandle ($_REQUEST);
     $registration->processRegistration();

@@ -9,6 +9,8 @@
 
   include ("../../Server/backbone/modules/agencies.inc.php");
   include ("../../Server/backbone/global.php");
+
+  unset($_SESSION['packageId']);
 ?>
 
 <!-----------------------------------------------------------------------------
@@ -88,7 +90,7 @@ License:     Apache 2.0 by Start Bootstrap.
         </div>
       </div>
     </nav>
-    
+
     <header id="contact-header">
       <div class="header-content">
         <div class="header-content-inner">

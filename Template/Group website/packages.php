@@ -10,6 +10,8 @@ Description: This file contains classes related to packages to get information
 include("../../Server/backbone/global.php");
 include("../../Server/backbone/modules/packages.inc.php");
 
+unset($_SESSION['packageId']);
+
 //define new package instance
 $packageInstance = new packages();
 $allPackages = $packageInstance->getPackages('newest'); //value of the arrays sorted asc. or desc.
