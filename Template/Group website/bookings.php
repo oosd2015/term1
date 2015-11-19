@@ -11,6 +11,9 @@ Description: This file contains code to display the packages that the user
   include ("../../Server/backbone/global.php");
 
   if(loggedIn()){
+    if(!isset($_SESSION["packageId"])){
+      header("Location: packages.php");
+    }
     $packageInstance = new packageInfo($_SESSION["packageId"]);
     $package = $packageInstance->packageDetails();
     //convert string to time
@@ -133,7 +136,7 @@ License:     The MIT License (MIT) Copyright (c) 2011-2015 Twitter, Inc.
     					<div class="intro">
     						Hello <strong><?php echo $customerFullName; ?></strong>,
     						<br>
-    						This is the overview for your Travel Experts Package.
+    						This is the overview for your Travel Experts Package
     					</div>
 
 
