@@ -17,6 +17,10 @@ var plane = {
               rows:21,
               columns:6,
             };
+var seatArr = new Array(numTravellers);
+for (var i = 0; i < seatArr.length; i++) {
+  seatArr[i] = "None";
+}
 
 function allowDrop(ev) {
     ev.preventDefault();
@@ -27,11 +31,16 @@ function drag(ev) {
 }
 
 function drop(ev) {
-    ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
-    ev.target.appendChild(document.getElementById(data));
-    var seat = ev.target.id;
-    document.getElementById("seatBtn").innerHTML = "Select Seat " + seat;
+    //Don't allow people to be stacked!
+    if(ev.target.tagName==="DIV") {
+      ev.preventDefault();
+      ev.target.appendChild(document.getElementById(data));
+
+      //set the seat selection text, relies on numeric seat icon id's
+      seatArr[data] = ev.target.id;
+      document.getElementById("seatSel").innerHTML = "<h4>Seat Selections: " + seatArr + "</h4>";
+    }
 }
 
 </script>
@@ -77,12 +86,16 @@ function drop(ev) {
 <script type="text/javascript">
 var html = "";
 
-function bPlane() {
+document.getElementById("planeHtml").innerHTML = buildPlane();
+
+function buildPlane() {
+  html += '<div style="display:flex;min-height:50px">';
   for (var i = 0; i < numTravellers; i++) {
-    html += '<div style="min-height:50px" ondrop="drop(event)" ondragover="allowDrop(event)">' +
-                '<img id="drag'+(i+1)+'" src="img/chair.svg" height="32px" draggable="true" ondragstart="drag(event)">'+
+    html += '<div min-height:50px" ondrop="drop(event)" ondragover="allowDrop(event)">' +
+                '<img id="'+i+'" src="img/chair.svg" height="32px" draggable="true" ondragstart="drag(event)">'+
             '</div>';
   }
+  html += '</div>';
 
   for (var i = 0; i < plane.rows; i++) {
     html += '<span style="float:left">';
@@ -101,14 +114,14 @@ function bPlane() {
             '</div>';
     html += '</span>';
   }
-
   return html;
 }
 
-// html += '</div>';
-
-document.getElementById("planeHtml").innerHTML = bPlane();
-
 </script>
+<div align="center">
+  <div id="seatSel"><h4>Seat Selections:</h4></div>
+  <!--Currently not hooked-up to anything, ideally will send off to the airline!-->
+  <a href="plane.php?travellers=<?php print($numTravellers) ?>" target="_blank" class="btn btn-primary" style="margin: 2em 0 2em">Submit Selection</a>
+</div>
 </body>
 </html>
