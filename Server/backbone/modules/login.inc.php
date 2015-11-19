@@ -1,11 +1,13 @@
-<?php
-/*************************************************************************** 
+<!-------------------------------------------------------------------------------
 Title:       Login Class
 Author:      Royal Bissell, Deyanira Cerdas Calvo (Pair Programming)
 Date:        2015-11-18 
 Description: This file contains the class to handle customer login.
              Validates login success and hashes password.
-*****************************************************************************/ 
+-------------------------------------------------------------------------------> 
+
+<?php
+
 include("form.inc.php");
 include("customers.inc.php");
 

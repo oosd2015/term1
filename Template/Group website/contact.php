@@ -69,33 +69,32 @@ License:     Apache 2.0 by Start Bootstrap.
           <a class="navbar-brand page-scroll" href="#page-top">Travel Experts</a>
         </div>
 
-          <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-          <li>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
               <a class="page-scroll" href="index.php">Home</a>
-          </li>
-            <li>
-                <a class="page-scroll" href="packages.php">Packages</a>
             </li>
             <li>
-                <a class="page-scroll" href="registration.php">Registration</a>
+              <a class="page-scroll" href="packages.php">Packages</a>
             </li>
             <li>
-                <a class="page-scroll" href="contact.php">Contact</a>
+              <a class="page-scroll" href="registration.php">Registration</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="contact.php">Contact</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-
+    
     <header id="contact-header">
       <div class="header-content">
         <div class="header-content-inner">
           <h1>Travel Experts Contacts</h1>
-          <hr>
+          <hr/>
           <p> We will make your dream destination come true!</p>
-          </hr>
         </div>
       </div>
     </header>
