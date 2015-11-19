@@ -209,7 +209,7 @@ License:     The MIT License (MIT) Copyright (c) 2011-2015 Twitter, Inc.
                 <div class="form-group">
                   <label class="col-md-4 control-label" for="Bookings"></label>
                     <div class="col-lg-12 text-center">
-                      <form method="post" id="packageForm" action="receipt.php">
+                      <form method="post" action="receipt.php">
                         <input type="hidden" id="grandTotalHidden" name="grandTotal" />
                         <input type="hidden" id="specialRequestsHidden" name="specialRequests" />
                         <input type="hidden" id="numberTravelersHidden" name="numberTravelers"/>
@@ -244,7 +244,7 @@ License:     The MIT License (MIT) Copyright (c) 2011-2015 Twitter, Inc.
     <script src="js/wow.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="js/creative.js"></script>
+
     <script type="text/javascript">
   /********************************
   Author: Dylan Harty
@@ -264,8 +264,13 @@ License:     The MIT License (MIT) Copyright (c) 2011-2015 Twitter, Inc.
       e.preventDefault();
     }
  });
+
  $("#packageNumber").keyup(function (e) {
    setPackageTotal($(this).val());
+ });
+
+ $("#specialRequests").keyup(function (e) {
+   setPackageTotal($("#packageNumber").val());
  });
 
  //keeps the totals updated
@@ -287,6 +292,7 @@ License:     The MIT License (MIT) Copyright (c) 2011-2015 Twitter, Inc.
     $("#numberTravelersHidden").val(travelers);
     $("#grandTotalHidden").val(grandTotal);
     $("#specialRequestsHidden").val($("#specialRequests").val());
+
     if ( $("#numberTravelersHidden").val() == "" ) {
       $("#Bookings").prop('disabled', true);
     } else {
@@ -302,6 +308,7 @@ License:     The MIT License (MIT) Copyright (c) 2011-2015 Twitter, Inc.
    v = v.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   return v;
 }
+
 
     </script>
 

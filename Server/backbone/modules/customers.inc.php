@@ -30,7 +30,8 @@
 
     public function __construct($CustReq) {
       if( !is_array($CustReq) ) {
-        die("Customer passed is not an array");
+        die("Wrong username or password");
+
       }
 
       /*
