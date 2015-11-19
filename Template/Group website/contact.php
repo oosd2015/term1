@@ -5,13 +5,15 @@
   Date:        2015-11-18 
   Description: HTML Contact page with agency and agents contact info.
                Uses Bootstrap Template, CSS, and JavaScript.
-  *****************************************************************************/ 
+  *************************************************************************** */
+
   include ("../../Server/backbone/modules/agencies.inc.php");
   include ("../../Server/backbone/global.php");
 ?>
 
 <!-----------------------------------------------------------------------------
-License:     The MIT License (MIT) Copyright (c) 2011-2015 Twitter, Inc.
+License:     Apache 2.0 by Start Bootstrap.
+             The MIT License (MIT) Copyright (c) 2011-2015 Twitter, Inc.
              Permission is hereby granted, free of charge, to any person
              obtaining a copy of this software and associated documentation
              files (the 'Software'), to deal in the Software without
@@ -29,7 +31,7 @@ License:     The MIT License (MIT) Copyright (c) 2011-2015 Twitter, Inc.
              BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
              ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
              CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-             SOFTWARE."
+             SOFTWARE." Source: http://www.apache.org/licenses/LICENSE-2.0
 ------------------------------------------------------------------------------->
 <!DOCTYPE html>
 <html lang="en">
@@ -67,7 +69,7 @@ License:     The MIT License (MIT) Copyright (c) 2011-2015 Twitter, Inc.
           <a class="navbar-brand page-scroll" href="#page-top">Travel Experts</a>
         </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
+          <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
           <li>
@@ -93,6 +95,7 @@ License:     The MIT License (MIT) Copyright (c) 2011-2015 Twitter, Inc.
           <h1>Travel Experts Contacts</h1>
           <hr>
           <p> We will make your dream destination come true!</p>
+          </hr>
         </div>
       </div>
     </header>
@@ -109,14 +112,9 @@ License:     The MIT License (MIT) Copyright (c) 2011-2015 Twitter, Inc.
     </section>
 
     <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center" style="margin-top:2em">
-                  <hr/>
-                  <p><strong>Copyright 2015 OOSD Travel Experts</strong></p>
-                </div>
-            </div>
-        </div>
+      <?php
+        include ("footer.php");
+      ?>
     </footer>
 
     <!--JavaScript------------------------------------------------------------->
