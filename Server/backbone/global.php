@@ -10,12 +10,9 @@ Description: This file contains classes that will be used on all pages
 session_start();
 
 include("globalExtensions.php");
-include("modules/messages.inc.php");
 
   //class for database functions
   class DB {
-
-    public $msg;
 
 		public function __construct($selector="travelexperts") {
 
@@ -35,7 +32,6 @@ include("modules/messages.inc.php");
       //connect to database
 			$mydb = new mysqli($this->host, $this->user, $this->password, $this->database);
       if(!$mydb) {
-        $this->msg = new ErrorMsg("Could not connect to the database.");
         return false;
       }
       return $mydb;
@@ -47,7 +43,6 @@ include("modules/messages.inc.php");
 			$result = $db->query($query);
       $results;
       if(!$result){
-        $this->msg = new ErrorMsg("Could not complete the query.");
         $db->close();
         return false;
       } else {
@@ -63,7 +58,6 @@ include("modules/messages.inc.php");
     			}
         }
         $result->free();
-        $this->msg = new SuccessMsg("Query Complete.");
         $db->close();
         return $results;
       }
@@ -75,7 +69,6 @@ include("modules/messages.inc.php");
       $result = $db->query($query);
       $results;
       if(!$result){
-        $this->msg = new ErrorMsg("Could not complete the query.");
         $db->close();
         return false;
       } else {
@@ -91,7 +84,6 @@ include("modules/messages.inc.php");
           }
         }
         $result->free();
-        $this->msg = new SuccessMsg("Query Complete.");
         $db->close();
         return $results;
       }
@@ -103,11 +95,9 @@ include("modules/messages.inc.php");
       $result = $db->query($query);
       $results;
       if(!$result){
-        $this->msg = new ErrorMsg("Could not complete the query.");
         $db->close();
         return false;
       }elseif($result->num_rows === 0){
-        $this->msg = new ErrorMsg("Could not complete the query.");
         $db->close();
         return false;
       }else{
@@ -115,7 +105,6 @@ include("modules/messages.inc.php");
           $results[] = $field->name;
         }
         $result->free();
-        $this->msg = new SuccessMsg("Query Complete.");
         $db->close();
         return $results;
       }
@@ -126,12 +115,10 @@ include("modules/messages.inc.php");
       $db = $this->connect();
       $result = $db->query($query);
       if(!$result){
-        $this->msg[] = new ErrorMsg("Could not complete the query.");
         $db->close();
         return false;
       }else{
         $db->close();
-        $this->msg[] = new SuccessMsg("Query Complete.");
         return true;
       }
     }

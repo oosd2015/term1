@@ -24,7 +24,6 @@
       //If we get a row in the result, then the email address has already been used.
       if ( !($customer===0) ) {
           //Custom Message
-          $this->msg[] = new ErrorMsg("Email already exists.");
           return false;
       } else {
           return true;
