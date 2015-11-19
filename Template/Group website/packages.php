@@ -16,6 +16,18 @@ unset($_SESSION['packageId']);
 $packageInstance = new packages();
 $allPackages = $packageInstance->getPackages('newest'); //value of the arrays sorted asc. or desc.
 $htmlOutput = $packageInstance->htmlFormatter($allPackages);
+
+$logState;
+$loginLink;
+
+if( loggedIn() ) {
+  $logState = "Logout";
+  $loginLink = "logout.php";
+} else {
+  $logState = "Login";
+  $loginLink = "login.php";
+}
+
 ?>
 <!-----------------------------------------------------------------------------
 License:     The MIT License (MIT) Copyright (c) 2011-2015 Twitter, Inc.
@@ -89,6 +101,9 @@ License:     The MIT License (MIT) Copyright (c) 2011-2015 Twitter, Inc.
               </li>
               <li>
                 <a class="page-scroll" href="contact.php">Contact</a>
+              </li>
+              <li>
+                <a class="page-scroll" href="<?php echo $loginLink; ?>"><?php echo $logState; ?></a>
               </li>
             </ul>
           </div>

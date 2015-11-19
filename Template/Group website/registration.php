@@ -16,6 +16,17 @@ Description: HTML Contact page with agency and agents contact info.
     $registration = new RegistrationHandle ($_REQUEST);
     $registration->processRegistration();
   }
+
+  $logState;
+  $loginLink;
+
+  if( loggedIn() ) {
+    $logState = "Logout";
+    $loginLink = "logout.php";
+  } else {
+    $logState = "Login";
+    $loginLink = "login.php";
+  }
 ?>
 
 <!-----------------------------------------------------------------------------
@@ -90,6 +101,9 @@ License:     Apache 2.0 by Start Bootstrap.
             </li>
             <li>
               <a class="page-scroll" href="contact.php">Contact</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="<?php echo $loginLink; ?>"><?php echo $logState; ?></a>
             </li>
           </ul>
         </div>

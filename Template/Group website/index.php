@@ -36,8 +36,8 @@ if (isset($_SESSION['packageId'])) {
   unset($_SESSION['packageId']);
 }
 
-$logState;
-$loginLink;
+  $logState;
+  $loginLink;
 
   if( loggedIn() ) {
     $logState = "Logout";

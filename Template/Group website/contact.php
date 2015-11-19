@@ -13,6 +13,17 @@
   if (isset($_SESSION['packageId'])) {
     unset($_SESSION['packageId']);
   }
+  
+  $logState;
+  $loginLink;
+
+  if( loggedIn() ) {
+    $logState = "Logout";
+    $loginLink = "logout.php";
+  } else {
+    $logState = "Login";
+    $loginLink = "login.php";
+  }
 ?>
 
 <!-----------------------------------------------------------------------------
@@ -87,6 +98,9 @@ License:     Apache 2.0 by Start Bootstrap.
             </li>
             <li>
               <a class="page-scroll" href="contact.php">Contact</a>
+            </li>
+            <li>
+              <a class="page-scroll" href="<?php echo $loginLink; ?>"><?php echo $logState; ?></a>
             </li>
           </ul>
         </div>
