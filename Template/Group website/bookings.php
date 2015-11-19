@@ -176,7 +176,7 @@ License:     The MIT License (MIT) Copyright (c) 2011-2015 Twitter, Inc.
     									<input type="text" id="packageNumber" placeholder="Number of Travelers"/>
     								</div>
     								<div class="col-xs-5 amount text-right">
-    									<span id="packagePriceTotal">0.00</span>
+    									<span id="packagePriceTotal">$0.00</span>
     								</div>
     							</div>
     							<div class="row item">

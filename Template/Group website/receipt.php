@@ -192,7 +192,7 @@ License:     Apache 2.0 by Start Bootstrap.
     									<?php echo $numberTravelers; ?>
     								</div>
     								<div class="col-xs-5 amount text-right">
-    									<?php echo $grandTotal; ?>
+    									$<?php echo $grandTotal; ?>
     								</div>
     							</div>
     						</div>
