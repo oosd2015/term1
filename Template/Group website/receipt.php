@@ -204,8 +204,8 @@ License:     Apache 2.0 by Start Bootstrap.
                   <br>
     						</div>
                 <div class="col-lg-12 text-center">
-                  <a href="plane.php?travellers=<?php print($numberTravelers) ?>" target="_blank" class="btn btn-primary style="margin: 3em; width:100px" >Select Seat</a>
-                  <a href="index.php" target="_blank" class="btn btn-primary" style="margin: 3em; width:100px">Home</a>
+                  <a href="plane.php?travellers=<?php print($numberTravelers) ?>" target="_blank" class="btn btn-primary" style="margin: 3em; width:130px" >Select Seat</a>
+                  <a href="index.php" class="btn btn-primary" style="margin: 3em; width:130px">Home</a>
                 </div>
 
                 <div class="thanks">
