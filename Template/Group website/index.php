@@ -5,9 +5,6 @@ Date:        2015-11-18 
 Description: HTML Index page.
              Uses Bootstrap Template, CSS, and JavaScript.
 <!-----------------------------------------------------------------------------
-<?php
-unset($_SESSION['packageId']);
-?>
 
 <!-----------------------------------------------------------------------------
 License:     Apache 2.0 by Start Bootstrap.
@@ -31,6 +28,26 @@ License:     Apache 2.0 by Start Bootstrap.
              CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
              SOFTWARE." Source: http://www.apache.org/licenses/LICENSE-2.0
 ------------------------------------------------------------------------------->
+
+<?php
+include("../../Server/backbone/global.php");
+
+if (isset($_SESSION['packageId'])) {
+  unset($_SESSION['packageId']);
+}
+
+$logState;
+$loginLink;
+
+  if( loggedIn() ) {
+    $logState = "Logout";
+    $loginLink = "logout.php";
+  } else {
+    $logState = "Login";
+    $loginLink = "login.php";
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -81,6 +98,9 @@ License:     Apache 2.0 by Start Bootstrap.
               </li>
               <li>
                 <a class="page-scroll" href="contact.php">Contact</a>
+              </li>
+              <li>
+                <a class="page-scroll" href="<?php echo $loginLink; ?>"><?php echo $logState; ?></a>
               </li>
             </ul>
           </div>
