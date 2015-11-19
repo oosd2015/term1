@@ -66,7 +66,7 @@ function drop(ev) {
     <div class="row" style="text-align:center">
 
       <span class="col-xs-12 bg-primary" style="min-width:1200px">
-        <h2>Drag the chair image onto a row and column to select your prefered seat!</h2>
+        <h2>Drag the chair image onto a box to select your preferred seat!</h2>
       </span>
 
     </div>
