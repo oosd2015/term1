@@ -179,7 +179,7 @@ License:     Apache 2.0 by Start Bootstrap.
     						<div class="headers clearfix">
     							<div class="row">
     								<div class="col-xs-4">Package</div>
-    								<div class="col-xs-3"></div>
+    								<div class="col-xs-3">Number of Travellers</div>
     								<div class="col-xs-5 text-right">Payment of</div>
     							</div>
     						</div>

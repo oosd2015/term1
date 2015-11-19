@@ -227,7 +227,7 @@ License:     Apache 2.0 by Start Bootstrap.
         <div class="form-group">
           <label class="col-md-4 control-label" for="passwordinput"></label>
             <div class="col-md-4">
-              <input name="CustPassword" type="password" placeholder="Password *" title="Minimum five characters." pattern="/.{5,}/"
+              <input name="CustPassword" type="password" placeholder="Password *" title="Minimum five characters." pattern="\b[0-9A-Za-z]{5,}\b"
                      class="form-control input-md" required="required" onfocus="showTip(this)" onblur="hideTip(this)">
               <p class="inputTip"></p>
             </div>
