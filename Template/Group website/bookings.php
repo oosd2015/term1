@@ -133,7 +133,7 @@ License:     The MIT License (MIT) Copyright (c) 2011-2015 Twitter, Inc.
     					<div class="intro">
     						Hello <strong><?php echo $customerFullName; ?></strong>,
     						<br>
-    						This is the overview for your Travel Experts Package <strong><?php echo "$".$packagePrice ?></strong> (CA)
+    						This is the overview for your Travel Experts Package.
     					</div>
 
 
@@ -170,7 +170,7 @@ License:     The MIT License (MIT) Copyright (c) 2011-2015 Twitter, Inc.
                       Return: <?php echo $returnDate; ?><br>
     								</div>
     								<div class="col-xs-3 qty">
-    									<input type="text" id="packageNumber" placeholder="Enter Number of Travelers"/>
+    									<input type="text" id="packageNumber" placeholder="Number of Travelers"/>
     								</div>
     								<div class="col-xs-5 amount text-right">
     									<span id="packagePriceTotal">0.00</span>

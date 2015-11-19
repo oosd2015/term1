@@ -129,14 +129,14 @@ License:     Apache 2.0 by Start Bootstrap.
               <div class="gallery-box">
                 <i class="fa fa-4x fa-paper-plane wow bounceIn text-primary" data-wow-delay=".1s"></i>
                 <h3>Industry Expertise</h3>
-                <p class="text-muted">We have more than 20 years of experience in creating the best destinations.</p>
+                <p class="text-muted">We have more than 20 years of experience creating the best vacations!</p>
               </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
               <div class="gallery-box">
                 <i class="fa fa-4x fa-newspaper-o wow bounceIn text-primary" data-wow-delay=".2s"></i>
-                <h3>All included packages</h3>
-                <p class="text-muted">Our packages are all included for smoothest logistics.</p>
+                <h3>All-inclusive Packages</h3>
+                <p class="text-muted">Our packages are all-inclusive.  Plan your trip with ease!</p>
               </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
