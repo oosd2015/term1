@@ -9,7 +9,6 @@ Description: This file contains classes related to packages to get information
   include ("../../Server/backbone/modules/packages.inc.php");
   include ("../../Server/backbone/modules/customers.inc.php");
   include ("../../Server/backbone/global.php");
-
   if(loggedIn()){
     $packageInstance = new packageInfo($_SESSION["packageId"]);
     $package = $packageInstance->packageDetails();
@@ -33,6 +32,9 @@ Description: This file contains classes related to packages to get information
     $query = "INSERT INTO `bookings` (`BookingNo`,`TravelerCount`, `CustomerId`, `TripTypeId`, `PackageId`)
     VALUES ( '".CONFIRMATIONNUMBER."', '".$numberTravelers."', '".$customer->getCustomerId()."', 'L', '".$_SESSION["packageId"]."')";
     $customers = $db->set($query);
+    if (isset($_SESSION['packageId'])) {
+      unset($_SESSION['packageId']);
+    }
     /*No need to add data to booking details;
     that info can all be gathered by joins*/
 

@@ -10,7 +10,9 @@
   include ("../../Server/backbone/modules/agencies.inc.php");
   include ("../../Server/backbone/global.php");
 
-  unset($_SESSION['packageId']);
+  if (isset($_SESSION['packageId'])) {
+    unset($_SESSION['packageId']);
+  }
 ?>
 
 <!-----------------------------------------------------------------------------
