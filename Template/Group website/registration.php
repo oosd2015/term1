@@ -60,7 +60,7 @@ License:     Apache 2.0 by Start Bootstrap.
     <!------------------------------------------------------------------------->
   </head>
 
-  <body id="page-top">
+  <body id="page-top" onload="formLoad()">
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -127,78 +127,88 @@ License:     Apache 2.0 by Start Bootstrap.
     </section>
 
     <!--Registers user in database-->
-    <form class="form-horizontal" action="registration.php" method="post" onsubmit="return validate(this)">
+    <div id="errors" style="text-align:center"></div>
+    <form class="form-horizontal" action="registration.php" method="post">
 
       <fieldset>
         <div class="form-group">
           <label class="col-md-4 control-label" for="textinput"></label>
             <div class="col-md-4">
-              <input name="CustFirstName" title="Please provide your first name." type="text" placeholder="First Name *"
-                     class="form-control input-md" required="required">
+              <input name="CustFirstName" type="text" placeholder="First Name *" title="Please provide your first name."
+                     class="form-control input-md" required="required" onfocus="showTip(this)" onblur="hideTip(this)">
+              <p class="inputTip"></p>
             </div>
         </div>
 
         <div class="form-group">
           <label class="col-md-4 control-label" for=""></label>
             <div class="col-md-4">
-              <input name="CustLastName" title="Please provide your last name." type="text" placeholder="Last Name *"
-                     class="form-control input-md" required="required">
+              <input name="CustLastName" type="text" placeholder="Last Name *" title="Please provide your last name."
+                     class="form-control input-md" required="required" onfocus="showTip(this)" onblur="hideTip(this)">
+              <p class="inputTip"></p>
             </div>
         </div>
 
         <div class="form-group">
           <label class="col-md-4 control-label" for=""></label>
             <div class="col-md-4">
-              <input name="CustAddress" title="Please provide your address." type="text" placeholder="Address *"
-                     class="form-control input-md" required="required">
+              <input name="CustAddress" type="text" placeholder="Address *" title="Please provide your address."
+                     class="form-control input-md" required="required" onfocus="showTip(this)" onblur="hideTip(this)">
+              <p class="inputTip"></p>
             </div>
         </div>
 
         <div class="form-group">
           <label class="col-md-4 control-label" for=""></label>
             <div class="col-md-4">
-              <input name="CustCity" title="Please provide your city." type="text" placeholder="City *"
-                     class="form-control input-md" required="required">
+              <input name="CustCity" type="text" placeholder="City *" title="Please provide your city."
+                     class="form-control input-md" required="required" onfocus="showTip(this)" onblur="hideTip(this)">
+              <p class="inputTip"></p>
             </div>
         </div>
 
         <div class="form-group">
           <label class="col-md-4 control-label" for=""></label>
             <div class="col-md-4">
-              <input name="CustProv" title="Please provide your province/state." type="text" placeholder="Province/State *"
-                     class="form-control input-md" required="required">
+              <input name="CustProv" type="text" placeholder="Province *" title="Please provide your province."
+                     class="form-control input-md" required="required" onfocus="showTip(this)" onblur="hideTip(this)">
+              <p class="inputTip"></p>
             </div>
         </div>
 
         <div class="form-group">
           <label class="col-md-4 control-label" for=""></label>
             <div class="col-md-4">
-              <input name="CustPostal" title="Please use this format: A0A 0A0" type="text" placeholder="Postal Code/Zip Code *"
-                     class="form-control input-md" required="required">
+              <input name="CustPostal" type="text" placeholder="Postal Code *" title="Enter Postal Code in this format: A5A 5A5"
+                     class="form-control input-md" required="required" onfocus="showTip(this)" onblur="hideTip(this)">
+              <p class="inputTip"></p>
             </div>
         </div>
 
         <div class="form-group">
           <label class="col-md-4 control-label" for=""></label>
             <div class="col-md-4">
-              <input name="CustCountry" title="Please provide your country." type="text" placeholder="Country"
-                     class="form-control input-md">
+              <input name="CustCountry" type="text" placeholder="Country" title="Please provide your country."
+                     class="form-control input-md" onfocus="showTip(this)" onblur="hideTip(this)">
+              <p class="inputTip"></p>
             </div>
         </div>
 
         <div class="form-group">
           <label class="col-md-4 control-label" for=""></label>
             <div class="col-md-4">
-              <input name="CustHomePhone" title="Please use this format: 555 555-5555" type="text" placeholder="Home Phone"
-                     class="form-control input-md">
+              <input name="CustHomePhone" type="text" placeholder="Home Phone" title="Enter Home Phone in this format: 555 555-5555"
+                     class="form-control input-md" onfocus="showTip(this)" onblur="hideTip(this)">
+              <p class="inputTip"></p>
             </div>
         </div>
 
         <div class="form-group">
           <label class="col-md-4 control-label" for=""></label>
             <div class="col-md-4">
-              <input name="CustBusPhone" title="Please use this format: 555 555-5555"  type="text" placeholder="Business Phone *"
-                     class="form-control input-md" required="required">
+              <input name="CustBusPhone" type="text" placeholder="Business Phone *" title="Enter Business Phone in this format 555 555-5555"
+                     class="form-control input-md" required="required" onfocus="showTip(this)" onblur="hideTip(this)">
+              <p class="inputTip"></p>
             </div>
         </div>
 
@@ -206,16 +216,18 @@ License:     Apache 2.0 by Start Bootstrap.
           <label class="col-md-4 control-label" for=""></label>
             <div class="col-md-4">
               <input name="CustEmail" type="email" placeholder="Email *"
-                     class="form-control input-md" title="Please provide your email." pattern="/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/"
-                     required="required">
+                     class="form-control input-md" title="Please provide your email in the following format: John.Smith@email.com" pattern="/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/"
+                     required="required" onfocus="showTip(this)" onblur="hideTip(this)">
+              <p class="inputTip"></p>
             </div>
         </div>
 
         <div class="form-group">
           <label class="col-md-4 control-label" for="passwordinput"></label>
             <div class="col-md-4">
-              <input name="CustPassword" title="Minimum five characters." type="password" placeholder="Password *"
-                     class="form-control input-md" required="required">
+              <input name="CustPassword" type="password" placeholder="Password *" title="Minimum five characters." pattern="/.{5,}/"
+                     class="form-control input-md" required="required" onfocus="showTip(this)" onblur="hideTip(this)">
+              <p class="inputTip"></p>
             </div>
         </div>
 
@@ -223,7 +235,7 @@ License:     Apache 2.0 by Start Bootstrap.
         <div class="form-group">
           <label class="col-md-4 control-label" for="singlebutton"></label>
             <div class="col-md-4">
-              <button id="singlebutton" type="submit" class="btn btn-primary">Sign Up</button>
+              <button id="singlebutton" type="submit" class="btn btn-primary" onclick="return formConfirm(this)">Sign Up</button>
             </div>
         </div>
       </fieldset>
@@ -246,6 +258,9 @@ License:     Apache 2.0 by Start Bootstrap.
     <script src="js/wow.min.js"></script>
     <!-- Custom Theme JavaScript -->
     <script src="js/creative.js"></script>
+
+    <!-- TRAVEL EXPERT SPECIFIC -->
+    <script src="js/form.js"></script>
 
   </body>
 </html>

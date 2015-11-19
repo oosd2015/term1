@@ -84,6 +84,18 @@
 }
 
 
+/*CSS for form Validation*/
+.inputTip {
+  position: absolute;
+  top: 2em;
+  left: 1em;
+  width:95%;
+  background-color:rgba(0, 0, 0, 0.75);
+  color: white;
+  z-index: 2;
+  border: 2px black solid;
+  padding: 1em;
+}
 
 /*Bookings Receipt*/
 .receipt-content .logo a:hover {
