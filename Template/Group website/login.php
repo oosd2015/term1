@@ -60,7 +60,7 @@ License:     Apache 2.0 by Start Bootstrap.
   </head>
 
   <body id="page-top">
-    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top" style="background-color:#f05f40">
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top" style="background-color:#f05f40"> <!-- nice color 	#34DDDD-->
       <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
