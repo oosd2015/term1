@@ -1,10 +1,14 @@
 <?php
-
-//These functions need to be moved to the contact.php page
-// Comment out but keep this copy for testing also.
-// include("../Server/backbone/global.php");
+/*************************************************************************** 
+Title:       PHP Agencies & Agents and Contact View Class
+Author:      Royal Bissell, Deyanira Cerdas Calvo (Pair Programming)
+Date:        2015-11-18 
+Description: This file contains the classes to hold agent and agency data,
+             and print agent and agency contact info.
+*****************************************************************************/ 
 
 /*****************************************************************************
+Author: Royal
 This class contains the properties methods for agency data
 Designed so the properties match the database (and input fields names)
 *****************************************************************************/
@@ -19,14 +23,14 @@ class Agency {
   private $AgncyFax;
 
   public function __construct($AgencyObj) {
-      $this->AgencyId     = $AgencyObj->AgencyId;
-      $this->AgncyAddress = $AgencyObj->AgncyAddress;
-      $this->AgncyCity    = $AgencyObj->AgncyCity;
-      $this->AgncyProv    = $AgencyObj->AgncyProv;
-      $this->AgncyPostal  = $AgencyObj->AgncyPostal;
-      $this->AgncyCountry = $AgencyObj->AgncyCountry;
-      $this->AgncyPhone   = $AgencyObj->AgncyPhone;
-      $this->AgncyFax     = $AgencyObj->AgncyFax;
+    $this->AgencyId     = $AgencyObj->AgencyId;
+    $this->AgncyAddress = $AgencyObj->AgncyAddress;
+    $this->AgncyCity    = $AgencyObj->AgncyCity;
+    $this->AgncyProv    = $AgencyObj->AgncyProv;
+    $this->AgncyPostal  = $AgencyObj->AgncyPostal;
+    $this->AgncyCountry = $AgencyObj->AgncyCountry;
+    $this->AgncyPhone   = $AgencyObj->AgncyPhone;
+    $this->AgncyFax     = $AgencyObj->AgncyFax;
   }
 
   public function getAgencyId() {
@@ -95,96 +99,98 @@ class Agency {
 }
 
 /*****************************************************************************
+Author: Royal
 This class contains the properties and methods for an agents data
 *****************************************************************************/
 class Agent {
-        private $AgentId;
-        private $AgtFirstName;
-        private $AgtMiddleInitial;
-        private $AgtLastName;
-        private $AgtBusPhone;
-        private $AgtEmail;
-        private $AgtPosition;
-        private $AgencyId;
+    private $AgentId;
+    private $AgtFirstName;
+    private $AgtMiddleInitial;
+    private $AgtLastName;
+    private $AgtBusPhone;
+    private $AgtEmail;
+    private $AgtPosition;
+    private $AgencyId;
 
-        public function __construct($agentObj) {
+    public function __construct($agentObj) {
 
-            $this->AgentId          = $agentObj->AgentId;
-            $this->AgtFirstName     = $agentObj->AgtFirstName;
-            $this->AgtMiddleInitial = $agentObj->AgtMiddleInitial;
-            $this->AgtLastName      = $agentObj->AgtLastName;
-            $this->AgtBusPhone      = $agentObj->AgtBusPhone;
-            $this->AgtEmail         = $agentObj->AgtEmail;
-            $this->AgtPosition      = $agentObj->AgtPosition;
-            $this->AgencyId         = $agentObj->AgencyId;
-        }
+      $this->AgentId          = $agentObj->AgentId;
+      $this->AgtFirstName     = $agentObj->AgtFirstName;
+      $this->AgtMiddleInitial = $agentObj->AgtMiddleInitial;
+      $this->AgtLastName      = $agentObj->AgtLastName;
+      $this->AgtBusPhone      = $agentObj->AgtBusPhone;
+      $this->AgtEmail         = $agentObj->AgtEmail;
+      $this->AgtPosition      = $agentObj->AgtPosition;
+      $this->AgencyId         = $agentObj->AgencyId;
+    }
 
-        public function getAgentId() {
-            return $this->AgentId;
-        }
+    public function getAgentId() {
+        return $this->AgentId;
+    }
 
-        public function setAgentId($agentId) {
-            $this->AgentId = $agentId;
-        }
+    public function setAgentId($agentId) {
+        $this->AgentId = $agentId;
+    }
 
-        public function getAgtFirstName() {
-            return $this->AgtFirstName;
-        }
+    public function getAgtFirstName() {
+        return $this->AgtFirstName;
+    }
 
-        public function setAgtFirstName($agtFName) {
-            $this->AgtFirstName = $agtFName;
-        }
+    public function setAgtFirstName($agtFName) {
+        $this->AgtFirstName = $agtFName;
+    }
 
-        public function getAgtLastName() {
-            return $this->AgtLastName;
-        }
+    public function getAgtLastName() {
+        return $this->AgtLastName;
+    }
 
-        public function setAgtLastName($agtLName) {
-            $this->AgtLastName = $agtLName;
-        }
+    public function setAgtLastName($agtLName) {
+        $this->AgtLastName = $agtLName;
+    }
 
-        public function getAgtMiddleInitial() {
-            return $this->AgtMiddleInitial;
-        }
+    public function getAgtMiddleInitial() {
+        return $this->AgtMiddleInitial;
+    }
 
-        public function setAgtMiddleInitial($agtMidInitial) {
-            $this->AgtMiddleInitial = $agtMidInitial;
-        }
+    public function setAgtMiddleInitial($agtMidInitial) {
+        $this->AgtMiddleInitial = $agtMidInitial;
+    }
 
-        public function getAgtBusPhone() {
-            return $this->AgtBusPhone;
-        }
+    public function getAgtBusPhone() {
+        return $this->AgtBusPhone;
+    }
 
-        public function setAgtBusPhone($agtPhone) {
-            $this->AgtBusPhone = $agtPhone;
-        }
+    public function setAgtBusPhone($agtPhone) {
+        $this->AgtBusPhone = $agtPhone;
+    }
 
-        public function getAgtEmail() {
-            return $this->AgtEmail;
-        }
+    public function getAgtEmail() {
+        return $this->AgtEmail;
+    }
 
-        public function setAgtEmail($agtEmail) {
-            $this->AgtEmail = $agtEmail;
-        }
+    public function setAgtEmail($agtEmail) {
+        $this->AgtEmail = $agtEmail;
+    }
 
-        public function getAgtPosition() {
-            return $this->AgtPosition ;
-        }
+    public function getAgtPosition() {
+        return $this->AgtPosition ;
+    }
 
-        public function setAgtPosition($agtPosition) {
-            $this->AgtPosition = $agtPosition;
-        }
+    public function setAgtPosition($agtPosition) {
+        $this->AgtPosition = $agtPosition;
+    }
 
-        public function getAgencyId() {
-            return $this->AgencyId;
-        }
+    public function getAgencyId() {
+        return $this->AgencyId;
+    }
 
-        public function setAgencyId($agencyId) {
-            $this->AgencyId = $agencyId;
-        }
+    public function setAgencyId($agencyId) {
+        $this->AgencyId = $agencyId;
+    }
   }
 
   /*****************************************************************************
+  Author: Deya
   This class contains the methods to display agents and agencies contact info
   *****************************************************************************/
   class ContactView {
@@ -212,7 +218,7 @@ class Agent {
                       . $agency->getAgncyAddress() . ', ' . $agency->getAgncyCity() . ', ' . $agency->getAgncyProv() . '<br/>'
                       . $agency->getAgncyPostal() . ', ' . $agency->getAgncyCountry() . '<br/></strong><hr/>';
 
-        //get agents and pass in a the current agency
+        //get agents and pass in the current agency
         $html .= $this->getAgentsHtml($agency);
       }
       $html .= '</div></div></div>';

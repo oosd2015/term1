@@ -1,5 +1,11 @@
 <?php
-
+/*************************************************************************** 
+Title:       Login Class
+Author:      Royal Bissell, Deyanira Cerdas Calvo (Pair Programming)
+Date:        2015-11-18 
+Description: This file contains the class to handle customer login.
+             Validates login success and hashes password.
+*****************************************************************************/ 
 include("form.inc.php");
 include("customers.inc.php");
 
@@ -48,7 +54,6 @@ Class to handle user login and the login page
       //First check that the input is ok before we start processing
       if ( !($this->validateInput()) ) {
           //user input doesn't meet the requirements
-          print "Invalid Input";
           return false;
       }
 
@@ -60,14 +65,16 @@ Class to handle user login and the login page
       //make sure the login works
       if ( !($this->validateLogin($result)) ) {
         //login not successful
-        print "Invalid Login";
         return false;
       } else {
         //log the user in
         $result = $result[0];
         $myUser = new Customer($result);
         $_SESSION["user"] = $myUser;
-        //print ($_SESSION["user"]->getCustFirstName() . " is logged in!");
+        /*
+        redirect the user to the booking page if they made it here from the a
+        package selection
+        */
         if(isset($_SESSION["packageId"]) && !empty($_SESSION["packageId"])){
         header("location: bookings.php");
         }else{
@@ -76,7 +83,5 @@ Class to handle user login and the login page
         return true;
       }
     }
-
-    //Function to check if a user is logged in; maybe move to global.php
   }
  ?>
