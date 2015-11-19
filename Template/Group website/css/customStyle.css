@@ -1,3 +1,36 @@
+
+/*Handles different background imafes on headers*/
+#index-header{
+  background-image: url(../img/header.jpg);
+}
+
+#packages-header{
+  background-image:  url(../img/header2.jpg);
+}
+
+#registration-header{
+  background-image:  url(../img/header3.jpg);
+}
+
+#contact-header{
+  background-image:  url(../img/header4.jpg);
+}
+
+
+/*CSS for form Validation*/
+.inputTip {
+  position: absolute;
+  top: 2em;
+  left: 1em;
+  width:95%;
+  background-color:rgba(0, 0, 0, 0.75);
+  color: white;
+  z-index: 2;
+  border: 2px black solid;
+  padding: 1em;
+}
+
+/*Additional BootStrap CSS to support Modals and our receipt*/
 .portfolio-modal .modal-content {
     padding: 100px 0;
     min-height: 100%;
@@ -63,38 +96,6 @@
 }
 .agents{
   margin-top: 20px;
-}
-
-
-
-#index-header{
-  background-image: url(../img/header.jpg);
-}
-
-#packages-header{
-  background-image:  url(../img/header2.jpg);
-}
-
-#registration-header{
-  background-image:  url(../img/header3.jpg);
-}
-
-#contact-header{
-  background-image:  url(../img/header4.jpg);
-}
-
-
-/*CSS for form Validation*/
-.inputTip {
-  position: absolute;
-  top: 2em;
-  left: 1em;
-  width:95%;
-  background-color:rgba(0, 0, 0, 0.75);
-  color: white;
-  z-index: 2;
-  border: 2px black solid;
-  padding: 1em;
 }
 
 /*Bookings Receipt*/
