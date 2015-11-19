@@ -133,7 +133,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="textinput"></label>
         <div class="col-md-4">
-          <input name="CustFirstName" type="text" placeholder="First Name *"
+          <input name="CustFirstName" title="Please provide your first name." type="text" placeholder="First Name *"
                  class="form-control input-md" required="required">
         </div>
     </div>
@@ -141,7 +141,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for=""></label>
         <div class="col-md-4">
-          <input name="CustLastName" type="text" placeholder="Last Name *"
+          <input name="CustLastName" title="Please provide your last name." type="text" placeholder="Last Name *"
                  class="form-control input-md" required="required">
         </div>
     </div>
@@ -149,7 +149,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for=""></label>
         <div class="col-md-4">
-          <input name="CustAddress" type="text" placeholder="Address *"
+          <input name="CustAddress" Title="Please provide your address." type="text" placeholder="Address *"
                  class="form-control input-md" required="required">
        </div>
     </div>
@@ -157,7 +157,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for=""></label>
         <div class="col-md-4">
-          <input name="CustCity" type="text" placeholder="City *"
+          <input name="CustCity" title="Please provide your city." type="text" placeholder="City *"
                  class="form-control input-md" required="required">
         </div>
     </div>
@@ -165,7 +165,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for=""></label>
         <div class="col-md-4">
-          <input name="CustProv" type="text" placeholder="Province/State *"
+          <input name="CustProv" title="Please provide your province/state." type="text" placeholder="Province/State *"
                  class="form-control input-md" required="required">
         </div>
     </div>
@@ -173,7 +173,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for=""></label>
         <div class="col-md-4">
-          <input name="CustPostal" type="text" placeholder="Postal Code/Zip Code *"
+          <input name="CustPostal" title="Please use this format: A0A 0A0" type="text" placeholder="Postal Code*"
                  class="form-control input-md" required="required">
         </div>
     </div>
@@ -181,7 +181,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for=""></label>
         <div class="col-md-4">
-          <input name="CustCountry" type="text" placeholder="Country"
+          <input name="CustCountry" title="Please provide your country." type="text" placeholder="Country"
                  class="form-control input-md">
         </div>
     </div>
@@ -189,7 +189,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for=""></label>
         <div class="col-md-4">
-          <input name="CustHomePhone" type="text" placeholder="Home Phone"
+          <input name="CustHomePhone" title="Please use this format: 555 555-5555" type="text" placeholder="Home Phone"
                  class="form-control input-md">
         </div>
     </div>
@@ -197,7 +197,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for=""></label>
         <div class="col-md-4">
-          <input name="CustBusPhone" type="text" placeholder="Business Phone *"
+          <input name="CustBusPhone" title="Please use this format: 555 555-5555" type="text" placeholder="Business Phone *"
                  class="form-control input-md" required="required">
         </div>
     </div>
@@ -205,7 +205,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for=""></label>
         <div class="col-md-4">
-          <input name="CustEmail" type="email" placeholder="Email *"
+          <input name="CustEmail" title="Please provide your email." type="email" placeholder="Email *"
                  class="form-control input-md" pattern="/(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/"
                  required="required">
         </div>
@@ -214,7 +214,7 @@
     <div class="form-group">
       <label class="col-md-4 control-label" for="passwordinput"></label>
         <div class="col-md-4">
-          <input name="CustPassword" type="password" placeholder="Password *"
+          <input name="CustPassword" title="Minimum five characters." type="password" placeholder="Password *"
                  class="form-control input-md" required="required">
         </div>
     </div>
