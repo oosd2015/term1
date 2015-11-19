@@ -121,7 +121,7 @@ function buildPlane() {
 <div align="center">
   <div id="seatSel"><h4>Seat Selections:</h4></div>
   <!--Currently not hooked-up to anything, ideally will send off to the airline!-->
-  <a href="plane.php?travellers=<?php print($numTravellers) ?>" target="_blank" class="btn btn-primary" style="margin: 2em 0 2em">Submit Selection</a>
+  <button class="btn btn-primary" style="margin: 2em 0 2em" onclick="window.close()">Submit Selection</button>
 </div>
 </body>
 </html>
