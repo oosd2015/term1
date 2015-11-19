@@ -1,43 +1,47 @@
 <?php
-//include("../global.php");
-/*
-  $db = new DB('travelexperts');
+/****************************************************************************
+Title:       Main Functions of Packages
+Author:      Dylan Harty and Heidi Cantalejo (pairProgramming)
+Date:        2015-11-09
+Description: This file contains classes related to packages to get information
+              from the database.
+*****************************************************************************/
 
-  $query = "SELECT * FROM `packages`";
-  $packages = $db->get($query);
-  print_r($packages);
-*/
-
-class packages{  //class that returns the array of packages sorted by date (either ascening or descending)
+//class that returns the array of packages sorted by date
+class packages{
   public function getPackages($sortBy){
     $packagesArray;
     switch ($sortBy) {
-        case "newest": //sort newest to oldest
+        //sort newest to oldest
+        case "newest":
           $query = "SELECT * FROM `packages` ORDER BY `PkgStartDate` DESC";
           $packagesArray = $this->connectToDatabase($query);
         break;
-        case "oldest": //sort oldest to newest
+        //sort oldest to newest
+        case "oldest":
           $query = "SELECT * FROM `packages` ORDER BY `PkgStartDate` ASC";
           $packagesArray = $this->connectToDatabase($query);
         break;
         default:
-            //Do Nothing
+          //do nothing
     }
-    return $this->processArray($packagesArray);  //returns value of processArray($packagesArray)
+    return $this->processArray($packagesArray);
   }
-  public function connectToDatabase($query){ //Pass query from getPackages based on sorting method.
+  //pass query from string
+  public function connectToDatabase($query){
     $db = new DB('travelexperts');
     $packages = $db->get($query);
     return $packages;
   }
   public function processArray($packagesArray){
-    foreach ($packagesArray as &$value) {  //& means that the changes we input will be kept in the array.  So, the startDatePassed and endDatePassed columns
-     //$value->PkgStartDate." ".$value->PkgEndDate;
-     $startMilli = (strtotime($value->PkgStartDate) * 1000); // convert to milliseconds
-     $endMilli = (strtotime($value->PkgEndDate) * 1000); // convert to milliseconds
+    //foreach to add if date has passed
+    foreach ($packagesArray as &$value) {
+      //converting time to milliseconds
+     $startMilli = (strtotime($value->PkgStartDate) * 1000);
+     $endMilli = (strtotime($value->PkgEndDate) * 1000);
      $startDatePassed = false;
      $endDatePassed = false;
-     if($startMilli >= round(microtime(true) * 1000)){ //microtime is current time
+     if($startMilli >= round(microtime(true) * 1000)){
       $startDatePassed = false;
      }else{
       $startDatePassed = true;
@@ -47,19 +51,20 @@ class packages{  //class that returns the array of packages sorted by date (eith
      }else{
       $endDatePassed = true;
      }
-     $value->startDatePassed = $startDatePassed; //push new value called "startDatePassed" to the $value array
-     $value->endDatePassed = $endDatePassed; //push new value called "endDatePassed" to the $value array
-     //$value["datePassed"] = $hasDatePassed;
-     //return $value;
+     $value->startDatePassed = $startDatePassed;
+     $value->endDatePassed = $endDatePassed;
+
     }
-    return $packagesArray; //in addPackages() we called processArray() to add $startDatePassed and $startDateEnd to return an updated $packagesArray
+    return $packagesArray;
   }
-  public function htmlFormatter($allPackages){ //create an html string
+  public function htmlFormatter($allPackages){
+    //creating string HTML variables
     $htmlModals = "";
     $htmlThumbnails = "";
     $htmlHidden = "";
     $counterId = 0;
 
+    //if date has passed, hide package
     $htmlHidden = '<div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title" style="text-align:center">
@@ -71,27 +76,20 @@ class packages{  //class that returns the array of packages sorted by date (eith
       <div id="collapseThree" class="panel-collapse collapse">
         <div class="panel-body">';
 
+    //foreach to format package HTML
     foreach ($allPackages as $package){
-      /*
-      $html .=  $package->PackageId;
-      $html .=  $package->PkgName;
-      $html .=  $package->PkgStartDate;
-      $html .=  $package->PkgEndDate;
-      $html .=  $package->PkgDesc;
-      $html .=  $package->PkgBasePrice;
-      $html .=  $package->PkgAgencyCommission;
-      $html .=  $package->PkgImage;
-      */
+      //need counterId to create unique HTML Ids
       $counterId++;
-      $modalId = 'portfolioModal'.$counterId; //this is the id for the modal, this increments it so we have a new id for each new modal
-      $anchorId = 'anchor'.$counterId; //this creates the id for the anchor, and increments it so we have a new id for each new anchor
+      $modalId = 'portfolioModal'.$counterId;
+      $anchorId = 'anchor'.$counterId;
+      //format price with comma
       $packagePrice = number_format($package->PkgBasePrice, 2, '.', ',');
 
-          if(($package->startDatePassed) && ($package->endDatePassed)){
-            $htmlHidden .= '
-            <span class="col-md-6">
-                                      <div class="row">
-                                          <div class="col-lg-12 text-center">
+        //if package has expired, hide
+        if(($package->startDatePassed) && ($package->endDatePassed)){
+          $htmlHidden .= '<span class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-lg-12 text-center">
                                               <h2 class="section-heading">'.$package->PkgName.'</h2>
                                               <p style="font-size:80%;">Was Only $'.$packagePrice.'</p>
                                               <hr class="primary">
@@ -101,7 +99,6 @@ class packages{  //class that returns the array of packages sorted by date (eith
                                           <div class="container-fluid">
                                               <div class="row no-gutter">
                                                   <div class="">
-
                                                           <img src="img/packages/'.$package->PkgImage.'" class="img-responsive" alt="">
                                                           <div class="packages-box-caption">
                                                               <div class="packages-box-caption-content">
@@ -109,19 +106,16 @@ class packages{  //class that returns the array of packages sorted by date (eith
                                                                     You Missed a Great Deal!
                                                                   </div>
                                                                   <div class="project-name">
-
                                                                   </div>
                                                               </div>
                                                           </div>
-
                                                   </div>
                                                 </div>
                                               </div>
                                             </div>
-                                          </span>
-                          ';
+                                          </span>';
           }else{
-                  //this is the portion of the string creating the thumbnails
+            //this is the portion of the HTML string creating the thumbnails
             $htmlThumbnails .= '<span class="container col-md-6">
                                       <a href="#" id="'.$anchorId.'" class="packageClickBtn"  data-modal="'.$modalId.'" >
                                       <div class="row">
@@ -134,7 +128,6 @@ class packages{  //class that returns the array of packages sorted by date (eith
                                           <div class="container-fluid">
                                               <div class="row no-gutter">
                                                   <div class="">
-
                                                           <img src="img/packages/'.$package->PkgImage.'" class="img-responsive" alt="">
                                                           <div class="packages-box-caption">
                                                               <div class="packages-box-caption-content">
@@ -142,24 +135,24 @@ class packages{  //class that returns the array of packages sorted by date (eith
                                                                     Click for more details!
                                                                   </div>
                                                                   <div class="project-name">
-
                                                                   </div>
                                                               </div>
                                                           </div>
-
                                                   </div>
                                                 </div>
                                               </div>
                                             </div>
                                           </a>
                                           </span>';
-                //this is the portion of the string that creates the modal
+
+            //this is the portion of the HTML string that creates the modal
             $startDateDisplay = ($package->startDatePassed == true) ?
             '<span style="color:red;font-weight:bold; text-decoration:line-through">'.date('F j, Y', strtotime($package->PkgStartDate)).'</span>' : date('F j, Y', strtotime($package->PkgStartDate));;
-
+            //see if date has passed and bold red if they have
             $endDateDisplay = ($package->endDatePassed == true) ?
             '<span style="color:red;font-weight:bold; text-decoration:line-through">'.date('F j, Y', strtotime($package->PkgEndDate)).'</span' : date('F j, Y', strtotime($package->PkgEndDate));
 
+            //create base model
             $htmlModals .= '<div class="portfolio-modal modal fade" id="'.$modalId.'" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-content">
                 <div class="close-modal" data-dismiss="modal">
@@ -201,24 +194,19 @@ class packages{  //class that returns the array of packages sorted by date (eith
             </div>
         </div>';
           }
-
-
     }
-    //$htmlModals
-    //$htmlThumbnails
-    $htmlHidden .= "</div>  </div>  </div>";
+    $htmlHidden .= "</div></div></div>";
 
-//whenever we click on an anchor with class="packageClickBtn", it will open a modal.
+    //whenever we click on an anchor with class="packageClickBtn", it will open a modal.
     $htmlScript = '<script type="text/javascript">
     $(".packageClickBtn").click(function(event){
-event.preventDefault();
-$("#"+$(this).attr("data-modal")).modal("show");
-});</script>';
+    event.preventDefault();
+    $("#"+$(this).attr("data-modal")).modal("show");});</script>';
 
    return array("modals"=>$htmlModals, "thumbnails"=>$htmlThumbnails, "script"=>$htmlScript, "hidden"=>$htmlHidden);
   }
-
 }
+//class extends packages so we can get details
 class packageInfo extends packages{
   public $packageId;
 
@@ -231,20 +219,4 @@ class packageInfo extends packages{
     return $package;
   }
 }
-
-
-
-/*
-$packageInstance = new packages();
-$allPackages = $packageInstance->getPackages('oldest'); //value of the arrays sorted asc. or desc.
-$htmlOutput = $packageInstance->htmlFormatter($allPackages);
-//print_r($htmlOutput);
-//echo '<html><head><script src="http://code.jquery.com/jquery-latest.min.js"
-//  type="text/javascript"></script></head><body>';
-//echo $htmlOutput['thumbnails'];
-//echo $htmlOutput['modals'];
-//echo $htmlOutput['script'];
-//echo '</body></html>';
-*/
-
- ?>
+?>

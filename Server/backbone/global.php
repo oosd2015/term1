@@ -1,15 +1,25 @@
 <?php
-//Ensure Sessions start before everything!
+/****************************************************************************
+Title:       Global Functions
+Author:      Dylan Harty and Heidi Cantalejo (pairProgramming)
+Date:        2015-11-09
+Description: This file contains classes that will be used on all pages
+              across the website.
+*****************************************************************************/
+//ensure sessions start before everything!
 session_start();
 
 include("globalExtensions.php");
 include("modules/messages.inc.php");
 
+  //class for database functions
   class DB {
 
     public $msg;
 
 		public function __construct($selector="travelexperts") {
+
+      //select database for travelexperts
       switch ($selector) {
           case "travelexperts":
                 $this->user = DATABASE_TRAVELEXPERTS_USERNAME;
@@ -22,6 +32,7 @@ include("modules/messages.inc.php");
       $this->host = DATABASE_HOST;
 		}
 		public function connect() {
+      //connect to database
 			$mydb = new mysqli($this->host, $this->user, $this->password, $this->database);
       if(!$mydb) {
         $this->msg = new ErrorMsg("Could not connect to the database.");
@@ -29,6 +40,8 @@ include("modules/messages.inc.php");
       }
       return $mydb;
 		}
+
+    //use query string to get data from database
     public function get($query) {
 			$db = $this->connect();
 			$result = $db->query($query);
@@ -56,6 +69,7 @@ include("modules/messages.inc.php");
       }
 		}
 
+    //instead of object, bring back associative array
     public function getAssoc($query) {
       $db = $this->connect();
       $result = $db->query($query);
@@ -83,6 +97,7 @@ include("modules/messages.inc.php");
       }
     }
 
+    //returns the fields from an SQL query
     public function getFields($query) {
       $db = $this->connect();
       $result = $db->query($query);
@@ -106,6 +121,7 @@ include("modules/messages.inc.php");
       }
     }
 
+    //insert values into the database
     public function set($query) {
       $db = $this->connect();
       $result = $db->query($query);
@@ -124,6 +140,7 @@ include("modules/messages.inc.php");
     }
   }
 
+  //global function loggedIn check if user is logged in
   function loggedIn() {
     if ( isset($_SESSION["user"]) && !empty($_SESSION["user"]) ) {
       return true;
@@ -131,6 +148,7 @@ include("modules/messages.inc.php");
       return false;
     }
   }
+
  //Get a random string using the $string
   function randomString($length = 5) {
       $string = '01234HIJKLMNOPQR56789ABCDEFGSTUVWXYZ';
@@ -140,16 +158,4 @@ include("modules/messages.inc.php");
       }
       return $randomString;
   }
-
-/*
-  $db = new DB('travelexperts');
-
-  $query = "SELECT * FROM `customers` WHERE `CustomerId`='104'";
-  $customers = $db->get($query);
-
-  print_r($customers);
-
-  var_dump($customers[0]->CustomerId);
-  echo $customers[0]->CustomerId;
-  */
  ?>
