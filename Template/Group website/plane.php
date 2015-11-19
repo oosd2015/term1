@@ -37,7 +37,6 @@ function drop(ev) {
       ev.preventDefault();
       ev.target.appendChild(document.getElementById(data));
 
-      //set the seat selection text, relies on numeric seat icon id's
       seatArr[data] = ev.target.id;
       document.getElementById("seatSel").innerHTML = "<h4>Seat Selections: " + seatArr + "</h4>";
     }
