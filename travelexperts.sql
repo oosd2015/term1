@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 19, 2015 at 08:36 PM
+-- Generation Time: Nov 21, 2015 at 09:20 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `travelexperts`
 --
+CREATE DATABASE IF NOT EXISTS `travelexperts` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `travelexperts`;
 
 -- --------------------------------------------------------
 
@@ -611,9 +613,7 @@ INSERT INTO `customers` (`CustomerId`, `CustFirstName`, `CustLastName`, `CustAdd
 (140, 'Derrick', 'Baltazar', '9111 Church Ave. #3N, NE', 'Calgary', 'AB', 'T3E 5C9', 'Canada', '4032255231', '4037502547', 'dba@gmail.com                                   ', 6, 'c8837b23ff8aaa8a2dde915473ce0991'),
 (141, 'Robert', 'Boyd', '96-04 57th Ave #12A, NE', 'Calgary', 'AB', 'T3E 5C5', 'Canada', '4032255647', '4037509512', 'rbo@gmail.com', 3, 'c8837b23ff8aaa8a2dde915473ce0991'),
 (142, 'Monica', 'Waldman', '257 Depot Rd., NE', 'Calgary', 'AB', 'T2J 6P3', 'Canada', '4032255629', '4032844566', 'mwaldman@aol.com                                  ', 2, 'c8837b23ff8aaa8a2dde915473ce0991'),
-(143, 'Gerard', 'Biers', '205 19th St., NE', 'Calgary', 'AB', 'T2J 6B6', 'Canada', '4032251952', '4037506578', 'gb@gmail.com', 8, 'c8837b23ff8aaa8a2dde915473ce0991'),
-(144, 'Test', 'One', '123s', 'Calgary', 'AB', 'P0S4AL', 'Canad', '1234567', '1234566', 'Royal@Email.com', NULL, '5f4dcc3b5aa765d61d8327deb882cf99'),
-(145, 'dsa', 'dasd', 'da', 'da', 'da', 'da', NULL, NULL, 'dad', 'das@gmail.com', NULL, '2a6571da26602a67be14ea8c5ab82349');
+(143, 'Gerard', 'Biers', '205 19th St., NE', 'Calgary', 'AB', 'T2J 6B6', 'Canada', '4032251952', '4037506578', 'gb@gmail.com', 8, 'c8837b23ff8aaa8a2dde915473ce0991');
 
 -- --------------------------------------------------------
 
