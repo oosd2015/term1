@@ -7,7 +7,6 @@ Description: This file contains the classes to hold agent and agency data,
              and print agent and agency contact info.
 
 --------------------------------------------------------------------------------
-Author: Royal
 This class contains the properties methods for agency data
 Designed so the properties match the database (and input fields names)
 *******************************************************************************/
@@ -98,7 +97,6 @@ class Agency {
 }
 
 /*****************************************************************************
-Author: Royal
 This class contains the properties and methods for an agents data
 *****************************************************************************/
 class Agent {
@@ -189,7 +187,6 @@ class Agent {
   }
 
   /*****************************************************************************
-  Author: Deya
   This class contains the methods to display agents and agencies contact info
   *****************************************************************************/
   class ContactView {

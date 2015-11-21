@@ -1,9 +1,11 @@
 <?php
-  //These functions need to be moved to the contact.php page
-  //Comment out but keep this copy for testing also.
-  //include("global.php");
-  //$registration = new RegistrationHandle();
-  //print ( $registration->validateUnique() );
+/*-------------------------------------------------------------------------------
+Title:       RegistrationHandle Class
+Author:      Royal Bissell
+Date:        2015-11-18 
+Description: This file contains the class to handle customer registration.
+             Validates login success and hashes password.
+------------------------------------------------------------------------------*/
 
   include("form.inc.php");
   include("customers.inc.php");

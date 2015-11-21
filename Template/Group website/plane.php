@@ -1,4 +1,13 @@
 <?php
+/******************************************************************************* 
+Title:       Airplane Seat Selector Page
+Author:      Royal Bissell
+Date:        2015-11-18 
+Description: This document contains the page to handle the Drag and Drop seats
+             that allows passengers to choose their seats.
+*******************************************************************************/
+
+//Passed in the number of travllers
 $numTravellers = $_GET["travellers"]
 ?>
 
@@ -11,6 +20,7 @@ $numTravellers = $_GET["travellers"]
 </style>
 <script>
 
+//Creates javascript variables to build the plane and set number of chairs.
 var numTravellers = <?php echo $numTravellers ?>;
 
 var plane = {
@@ -22,26 +32,28 @@ for (var i = 0; i < seatArr.length; i++) {
   seatArr[i] = "None";
 }
 
+//Handles the actual drap and drop actions//////////////////////////////////////
 function allowDrop(ev) {
-    ev.preventDefault();
+  ev.preventDefault();
 }
 
 function drag(ev) {
-    ev.dataTransfer.setData("text", ev.target.id);
+  ev.dataTransfer.setData("text", ev.target.id);
 }
 
 function drop(ev) {
-    var data = ev.dataTransfer.getData("text");
-    //Don't allow people to be stacked!
-    if(ev.target.tagName==="DIV") {
-      ev.preventDefault();
-      ev.target.appendChild(document.getElementById(data));
+  var data = ev.dataTransfer.getData("text");
+  //Don't allow people to be stacked!
+  if(ev.target.tagName==="DIV") {
+    ev.preventDefault();
+    ev.target.appendChild(document.getElementById(data));
 
-      seatArr[data] = ev.target.id;
-      document.getElementById("seatSel").innerHTML = "<h4>Seat Selections: " + seatArr + "</h4>";
-    }
+    seatArr[data] = ev.target.id;
+    document.getElementById("seatSel").innerHTML = "<h4>Seat Selections: "
+                                                   + seatArr + "</h4>";
+  }
 }
-
+////////////////////////////////////////////////////////////////////////////////
 </script>
 
 <title>Travel Experts</title>
@@ -82,12 +94,14 @@ function drop(ev) {
     </div>
   </section>
 
+<!-- Everything inside this Javascript tag builds the html elements for the plane and chairs-->
 <script type="text/javascript">
 var html = "";
 
 document.getElementById("planeHtml").innerHTML = buildPlane();
 
 function buildPlane() {
+  //This part builds the chairs
   html += '<div style="display:flex;min-height:50px">';
   for (var i = 0; i < numTravellers; i++) {
     html += '<div min-height:50px" ondrop="drop(event)" ondragover="allowDrop(event)">' +
@@ -96,6 +110,7 @@ function buildPlane() {
   }
   html += '</div>';
 
+  //This part builds the plane
   for (var i = 0; i < plane.rows; i++) {
     html += '<span style="float:left">';
     html += '<div align="center" style="background-color:#f05f40;color:white;border-bottom:1px solid black; margin-bottom:.5em">'+
@@ -117,9 +132,11 @@ function buildPlane() {
 }
 
 </script>
+
+
 <div align="center">
   <div id="seatSel"><h4>Seat Selections:</h4></div>
-  <!--Currently not hooked-up to anything, ideally will send off to the airline!-->
+  <!--Currently not hooked-up to anything, ideally will send off to the airline, or for internal use-->
   <button class="btn btn-primary" style="margin: 2em 0 2em" onclick="window.close()">Submit Selection</button>
 </div>
 </body>

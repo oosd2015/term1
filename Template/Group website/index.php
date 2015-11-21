@@ -32,6 +32,11 @@ License:     Apache 2.0 by Start Bootstrap.
 <?php
 include("../../Server/backbone/global.php");
 
+/*
+Main pages (index, packages, registration, and contact) session variable checks
+This code block is on all the pages, to make sure we don't have a package and
+also to check if the user is logged in or not to modify the nav bar.
+*/
 if (isset($_SESSION['packageId'])) {
   unset($_SESSION['packageId']);
 }
@@ -46,6 +51,7 @@ if (isset($_SESSION['packageId'])) {
     $logState = "Login";
     $loginLink = "login.php";
   }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
