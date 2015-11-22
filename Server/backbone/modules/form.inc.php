@@ -2,7 +2,8 @@
   /*************************************************************************** 
   Title:       Form Class
   Author:      Royal Bissell
-  Date:        2015-11-18 
+  Class:       OOSD FALL 2015
+Date:        2015-11-18
   Description: This file contains the class to handle form submissions.
                Specific form classes will extend from this class.
 --------------------------------------------------------------------------------

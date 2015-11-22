@@ -1,7 +1,8 @@
 <!-----------------------------------------------------------------------------
 Title:       Index page
-Author:      Royal Bissell, Deyanira Cerdas Calvo (Pair Programming)
-Date:        2015-11-18 
+Author:      Deyanira Cerdas Calvo
+Class:       OOSD FALL 2015
+Date:        2015-11-18
 Description: HTML Index page.
              Uses Bootstrap Template, CSS, and JavaScript.
 <!-----------------------------------------------------------------------------

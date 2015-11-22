@@ -2,7 +2,8 @@
 /******************************************************************************* 
 Title:       PHP Agencies & Agents and Contact View Class
 Author:      Royal Bissell, Deyanira Cerdas Calvo (Pair Programming)
-Date:        2015-11-18 
+Class:       OOSD FALL 2015
+Date:        2015-11-18
 Description: This file contains the classes to hold agent and agency data,
              and print agent and agency contact info.
 

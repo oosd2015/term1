@@ -2,7 +2,8 @@
 /****************************************************************************
 Title:       Global Extensions
 Author:      Dylan Harty and Heidi Cantalejo (pairProgramming)
-Date:        2015-11-09
+Class:       OOSD FALL 2015
+Date:        2015-11-18
 Description: This file is to be included in global.php to define global
               variables.
 *****************************************************************************/

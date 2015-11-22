@@ -2,7 +2,8 @@
   /***************************************************************************** 
   Title:       Contact information page
   Author:      Royal Bissell, Deyanira Cerdas Calvo (Pair Programming)
-  Date:        2015-11-18 
+  Class:       OOSD FALL 2015
+Date:        2015-11-18
   Description: HTML Contact page with agency and agents contact info.
                Uses Bootstrap Template, CSS, and JavaScript.
   *************************************************************************** */
@@ -13,7 +14,7 @@
   if (isset($_SESSION['packageId'])) {
     unset($_SESSION['packageId']);
   }
-  
+
   $logState;
   $loginLink;
 

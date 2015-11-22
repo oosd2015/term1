@@ -2,7 +2,8 @@
 /******************************************************************************* 
 Title:       Airplane Seat Selector Page
 Author:      Royal Bissell
-Date:        2015-11-18 
+Class:       OOSD FALL 2015
+Date:        2015-11-18
 Description: This document contains the page to handle the Drag and Drop seats
              that allows passengers to choose their seats.
 *******************************************************************************/

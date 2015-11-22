@@ -2,7 +2,8 @@
 /****************************************************************************
 Title:       Order Now Redirect Page
 Author:      Dylan Harty and Heidi Cantalejo (pairProgramming)
-Date:        2015-11-09
+Class:       OOSD FALL 2015
+Date:        2015-11-18
 Description: This file contains classes related to packages to get information
               from the database.
 *****************************************************************************/

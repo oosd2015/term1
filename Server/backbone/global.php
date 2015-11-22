@@ -2,7 +2,8 @@
 /****************************************************************************
 Title:       Global Functions
 Author:      Dylan Harty and Heidi Cantalejo (pairProgramming)
-Date:        2015-11-09
+Class:       OOSD FALL 2015
+Date:        2015-11-18
 Description: This file contains classes that will be used on all pages
               across the website.
 *****************************************************************************/
